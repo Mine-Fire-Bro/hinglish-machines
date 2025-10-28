@@ -234,86 +234,88 @@
         <div class="made-by">Made by Mine Fire Bro</div>
     </div>
 
-    <script>
-        let lastLoveType = 'sweet';
+<script>
+    let lastLoveType = 'sweet';
 
-        const sweetCompliments = [
-            "{name} yaar, tu itna/itni pyaara hai ki flowers bhi jealous ho jate hain! Sachi mein! 🌸",
-            "Arre {name}, teri smile dekh ke toh din bhi bright ho jata hai! Keep shining yaar! ✨😊",
-            "{name} bhai/behen, tera positive vibe itna strong hai ki negativity bhi bhag jati hai! Amazing! 💫",
-            "Dekh {name}, tu jitna sochta hai usse kaafi zyada valuable hai! Remember that! 💎",
-            "{name}, teri personality itni sweet hai ki sugar bhi competition feel karta hai! Sachhi! 🍬",
-            "Abe {name} yaar, tere jaisa genuine person milna mushkil hai! You're precious! 💝",
-            "{name}, teri kindness dekh ke dil khush ho jata hai! Keep being you! 🌟",
-            "Bhai/Behen {name}, tu itna strong hai ki mountains bhi inspire ho jate hain! Believe in yourself! ⛰️",
-            "{name}, tera presence itna calming hai ki meditation bhi seekh le! Peaceful soul! 🧘",
-            "Arre {name}, tu jahan bhi jata hai wahan ka atmosphere hi badal jata hai! That's your magic! ✨",
-            "{name} yaar, teri energy itni contagious hai ki sadness bhi dur bhag jati hai! Keep spreading joy! 🌈",
-            "Dekh {name}, tu itna talented hai ki skills bhi tere fan hain! Never doubt yourself! 🎨",
-            "{name}, tera heart itna pure hai ki angels bhi notes lete hain! Beautiful soul! 👼",
-            "Bhai/Behen {name}, tu itna loyal hai ki dogs bhi competition feel karte hain! True friend! 🐕",
-            "{name} yaar, teri presence se life colorful ban jati hai! You're a blessing! 🎨💕"
-        ];
+    const sweetCompliments = [
+        "{name} ji, aap itne pyaare hain ki phool bhi jealous ho jaate hain! 🌸",
+        "Arre {name}, aapki smile dekh kar din bhi bright ho jaata hai! ✨😊",
+        "{name} ji, aapka positive vibe itna strong hai ki negativity bhi bhaag jaati hai! 💫",
+        "Dekhiye {name}, aap jitna sochte hain usse kahin zyada valuable hain! 💎",
+        "{name} ji, aapki personality itni sweet hai ki sugar bhi competition feel karta hai! 🍬",
+        "Arey {name}, aap jaise genuine log milna mushkil hai! Aap bahut precious hain! 💝",
+        "{name} ji, aapki kindness dil ko choo jaati hai! Hamesha aise hi bane rahiye! 🌟",
+        "{name}, aap itne strong hain ki pahaad bhi inspire ho jaate hain! ⛰️",
+        "{name} ji, aapka presence itna peaceful hai ki meditation bhi seekh le! 🧘",
+        "Arre {name}, jahan aap jaate hain, wahan ka atmosphere hi badal jaata hai! ✨",
+        "{name}, aapki energy itni positive hai ki sadness bhi dur bhaag jaati hai! 🌈",
+        "Dekhiye {name}, aap itne talented hain ki skills bhi fan hain aapke! 🎨",
+        "{name} ji, aapka dil itna pure hai ki farishte bhi seekhte hain aapse! 👼",
+        "{name}, aap itne loyal hain ki dogs bhi inspire ho jaate hain! 🐕",
+        "{name} ji, aapke hone se hi life colorful lagti hai! 🎨💕"
+    ];
 
-        const romanticLines = [
-            "{name}, tere bina coffee bhi phiki lagti hai! Tu hi toh meri sugar hai! ☕💕",
-            "Arre {name}, teri aankhon mein toh poora universe hai! Lost ho jata hoon yaar! 🌌✨",
-            "{name}, jab tu smile karti/karta hai na, toh lagta hai jaise music sun raha hoon! 🎵😍",
-            "Dekh {name}, tu itna special hai ki dictionary mein bhi tera naam hona chahiye! 📖💝",
-            "{name} yaar, tere saath time itna fast nikal jata hai ki clock bhi shocked hai! ⏰💫",
-            "Abe {name}, teri voice itni sweet hai ki songs bhi jealous ho jate hain! Sacchi! 🎶😊",
-            "{name}, tu meri zindagi ka best notification hai! Heart skip ho jata hai! 📱💗",
-            "Bhai/Behen {name}, tere bina pizza bhi boring lagta hai! Tu hi toh topping hai! 🍕❤️",
-            "{name}, teri hasi sunke toh dil garden garden ho jata hai! Blooming feeling! 🌺😄",
-            "Arre {name}, tu itna cute hai ki teddy bears bhi competition chhod dete hain! 🧸💕",
-            "{name} yaar, tere thoughts itne beautiful hain ki poetry bhi inspire hoti hai! 📝✨",
-            "Dekh {name}, tu meri life ka best chapter hai! Keep writing with me! 📚💝",
-            "{name}, tere saath har moment special ban jata hai! Magic hai tu! ✨💫",
-            "Bhai/Behen {name}, tu itna wonderful hai ki rainbows bhi fade lag jate hain! Colorful soul! 🌈❤️",
-            "{name} yaar, tere bina playlist bhi incomplete hai! Tu hi toh favorite song hai! 🎵💗"
-        ];
+    const romanticLines = [
+        "{name}, aapke bina coffee bhi feeki lagti hai! Aap hi toh meri sugar hain! ☕💕",
+        "Arre {name}, aapki aankhon mein toh poora universe chhupa hai! 🌌✨",
+        "{name} ji, jab aap muskuraate hain na, toh lagta hai jaise music baj raha ho! 🎵😍",
+        "Dekhiye {name}, aap itne special hain ki dictionary mein bhi aapka naam hona chahiye! 📖💝",
+        "{name}, aapke saath waqt itna tez nikal jaata hai ki ghadi bhi hairaan hoti hai! ⏰💫",
+        "Arey {name}, aapki awaaz itni meethi hai ki gaane bhi jealous ho jaate hain! 🎶😊",
+        "{name} ji, aap meri zindagi ka sabse khoobsurat notification hain! 📱💗",
+        "{name}, aapke bina pizza bhi boring lagta hai! Aap hi toh topping hain! 🍕❤️",
+        "{name}, aapki hasi sunke dil garden garden ho jaata hai! 🌺😄",
+        "Arre {name}, aap itne cute hain ki teddy bears bhi haar maan jaate hain! 🧸💕",
+        "{name} ji, aapke thoughts itne khoobsurat hain ki poetry bhi likhi jaati hai aapse inspire hokar! 📝✨",
+        "Dekhiye {name}, aap meri life ka sabse beautiful chapter hain! 📚💝",
+        "{name} ji, aapke saath har moment special ban jaata hai! ✨💫",
+        "{name}, aap itne wonderful hain ki rainbow bhi dull lagta hai aapke saamne! 🌈❤️",
+        "{name} ji, aap meri playlist ka favorite song hain! 🎵💗"
+    ];
 
-        function getSweetCompliment() {
-            lastLoveType = 'sweet';
-            const name = document.getElementById('loveNameInput').value.trim() || 'Sweetie';
-            const love = sweetCompliments[Math.floor(Math.random() * sweetCompliments.length)];
-            displayLove(love.replace(/{name}/g, name), '💕💕💕💕💕');
+    function getSweetCompliment() {
+        lastLoveType = 'sweet';
+        const name = document.getElementById('loveNameInput').value.trim() || 'Dost';
+        const love = sweetCompliments[Math.floor(Math.random() * sweetCompliments.length)];
+        displayLove(love.replace(/{name}/g, name), '💕💕💕💕💕');
+    }
+
+    function getRomanticLine() {
+        lastLoveType = 'romantic';
+        const name = document.getElementById('loveNameInput').value.trim() || 'Jaan';
+        const love = romanticLines[Math.floor(Math.random() * romanticLines.length)];
+        displayLove(love.replace(/{name}/g, name), '😍❤️😍❤️😍');
+    }
+
+    function getNextLove() {
+        if (lastLoveType === 'sweet') {
+            getSweetCompliment();
+        } else {
+            getRomanticLine();
         }
+    }
 
-        function getRomanticLine() {
-            lastLoveType = 'romantic';
-            const name = document.getElementById('loveNameInput').value.trim() || 'Jaanu';
-            const love = romanticLines[Math.floor(Math.random() * romanticLines.length)];
-            displayLove(love.replace(/{name}/g, name), '😍❤️😍❤️😍');
-        }
+    function displayLove(text, level) {
+        const loveBox = document.getElementById('loveBox');
+        const loveText = document.getElementById('loveText');
+        const loveScoreBox = document.getElementById('loveScoreBox');
+        const loveLevel = document.getElementById('loveLevel');
+        const loveNextBtn = document.getElementById('loveNextBtn');
 
-        function getNextLove() {
-            if (lastLoveType === 'sweet') {
-                getSweetCompliment();
-            } else {
-                getRomanticLine();
-            }
-        }
+        loveText.textContent = text;
+        loveLevel.textContent = level;
+        
+        loveBox.classList.remove('hidden');
+        loveScoreBox.classList.remove('hidden');
+        loveNextBtn.classList.remove('hidden');
+        
+        loveBox.style.animation = 'none';
+        setTimeout(() => {
+            loveBox.style.animation = 'slideIn 0.5s ease-out';
+        }, 10);
+    }
+</script>
 
-        function displayLove(text, level) {
-            const loveBox = document.getElementById('loveBox');
-            const loveText = document.getElementById('loveText');
-            const loveScoreBox = document.getElementById('loveScoreBox');
-            const loveLevel = document.getElementById('loveLevel');
-            const loveNextBtn = document.getElementById('loveNextBtn');
-
-            loveText.textContent = text;
-            loveLevel.textContent = level;
-            
-            loveBox.classList.remove('hidden');
-            loveScoreBox.classList.remove('hidden');
-            loveNextBtn.classList.remove('hidden');
-            
-            loveBox.style.animation = 'none';
-            setTimeout(() => {
-                loveBox.style.animation = 'slideIn 0.5s ease-out';
-            }, 10);
-        }
-    </script>
 </body>
+
 </html>
