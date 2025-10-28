@@ -6,198 +6,102 @@
     <meta name="description" content="Get loved in Hinglish! Sweet compliments and romantic lines by Mine Fire Bro">
     <title>Loving Machine - Hinglish Machines</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{
+            font-family:'Arial',sans-serif;
+            background:linear-gradient(135deg,#000 0%,#434343 100%);
+            min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;
+        }
+        .container{
+            background:rgba(20,20,20,.95);border:3px solid #ff1493;
+            border-radius:20px;padding:40px;max-width:700px;width:100%;
+            box-shadow:0 20px 60px rgba(255,20,147,.5);text-align:center;position:relative;
+        }
+        .made-by{position:absolute;bottom:15px;right:20px;color:#ff69b4;font-size:.9em;font-weight:bold;text-shadow:0 0 5px #ff1493;}
+        h1{
+            color:#ff1493;font-size:2.8em;margin-bottom:10px;
+            text-shadow:0 0 10px #ff1493,0 0 20px #ff1493;animation:glow 2s infinite;
+        }
+        @keyframes glow{
+            0%,100%{text-shadow:0 0 10px #ff1493,0 0 20px #ff1493}
+            50%{text-shadow:0 0 20px #ff1493,0 0 30px #ff1493,0 0 40px #ff1493}
+        }
+        .subtitle{color:#ff69b4;margin-bottom:30px;font-size:1.2em;font-weight:bold;}
+        .warning{
+            background:rgba(255,20,147,.2);border:2px solid #ff1493;color:#fff;
+            padding:15px;border-radius:10px;margin-bottom:20px;font-size:.9em;
+        }
+        .input-section{margin-bottom:30px;}
+        input{
+            width:100%;padding:15px;font-size:1.1em;border:3px solid #ff1493;
+            border-radius:10px;outline:none;background:rgba(0,0,0,.5);color:#fff;
+            transition:all .3s;
+        }
+        input::placeholder{color:#999;}
+        input:focus{
+            border-color:#ff69b4;transform:scale(1.02);
+            box-shadow:0 0 20px rgba(255,20,147,.5);
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #434343 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+        /* ---------- BUTTONS ---------- */
+        .btn{
+            background:linear-gradient(135deg,#ff1493 0%,#ff69b4 100%);
+            color:#fff;border:2px solid #fff;
+            padding:14px 28px;font-size:1.05em;
+            border-radius:10px;cursor:pointer;transition:all .3s;
+            font-weight:bold;margin:8px;
+            box-shadow:0 5px 15px rgba(255,20,147,.4);
+            min-height:48px;display:inline-flex;align-items:center;justify-content:center;
         }
-
-        .container {
-            background: rgba(20, 20, 20, 0.95);
-            border: 3px solid #ff1493;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 700px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(255, 20, 147, 0.5);
-            text-align: center;
-            position: relative;
+        .btn:hover{
+            transform:translateY(-3px);
+            box-shadow:0 8px 20px rgba(255,20,147,.6);
+            background:linear-gradient(135deg,#ff69b4 0%,#ff1493 100%);
         }
-
-        .made-by {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            color: #ff69b4;
-            font-size: 0.9em;
-            font-weight: bold;
-            text-shadow: 0 0 5px #ff1493;
+        .btn-next{
+            background:linear-gradient(135deg,#444 0%,#222 100%);
+            border:2px solid #ff1493;
         }
-
-        h1 {
-            color: #ff1493;
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493;
-            animation: glow 2s infinite;
+        .btn-next:hover{background:linear-gradient(135deg,#555 0%,#333 100%);}
+        .btn-back{
+            background:linear-gradient(135deg,#333 0%,#111 100%);
+            border:2px solid #666;font-size:1em;padding:10px 20px;
+            text-decoration:none;display:inline-block;
         }
-
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493; }
-            50% { text-shadow: 0 0 20px #ff1493, 0 0 30px #ff1493, 0 0 40px #ff1493; }
+        .btn-back:hover{
+            background:linear-gradient(135deg,#444 0%,#222 100%);
+            border-color:#999;
         }
+        .button-group{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
 
-        .subtitle {
-            color: #ff69b4;
-            margin-bottom: 30px;
-            font-size: 1.2em;
-            font-weight: bold;
+        .love-box{
+            background:linear-gradient(135deg,#1a0011 0%,#330022 100%);
+            color:#fff;border:3px solid #ff1493;padding:30px;
+            border-radius:15px;margin-top:30px;min-height:150px;
+            display:flex;align-items:center;justify-content:center;
+            font-size:1.4em;line-height:1.8;
+            box-shadow:0 10px 30px rgba(255,20,147,.3);
+            animation:slideIn .5s ease-out;
         }
+        @keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .hidden{display:none;}
+        .heart{font-size:3em;animation:bounce 2s infinite;}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .score{margin-top:20px;font-size:1.3em;color:#ff1493;font-weight:bold;text-shadow:0 0 10px #ff1493;}
 
-        .warning {
-            background: rgba(255, 20, 147, 0.2);
-            border: 2px solid #ff1493;
-            color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 0.9em;
-        }
-
-        .input-section {
-            margin-bottom: 30px;
-        }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.1em;
-            border: 3px solid #ff1493;
-            border-radius: 10px;
-            outline: none;
-            background: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            transition: all 0.3s;
-        }
-
-        input::placeholder {
-            color: #999;
-        }
-
-        input:focus {
-            border-color: #ff69b4;
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
-            color: white;
-            border: 2px solid #fff;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            margin: 10px;
-            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.6);
-            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
-        }
-
-        .btn-next {
-            background: linear-gradient(135deg, #444 0%, #222 100%);
-            border: 2px solid #ff1493;
-        }
-
-        .btn-next:hover {
-            background: linear-gradient(135deg, #555 0%, #333 100%);
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #333 0%, #111 100%);
-            border: 2px solid #666;
-            font-size: 1em;
-            padding: 10px 20px;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-back:hover {
-            background: linear-gradient(135deg, #444 0%, #222 100%);
-            border-color: #999;
-        }
-
-        .love-box {
-            background: linear-gradient(135deg, #1a0011 0%, #330022 100%);
-            color: #fff;
-            border: 3px solid #ff1493;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-            min-height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4em;
-            line-height: 1.8;
-            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+        /* ---------- MOBILE ---------- */
+        @media (max-width:480px){
+            .container{padding:25px;margin:10px;}
+            h1{font-size:2.2em;}
+            .subtitle{font-size:1.1em;}
+            .btn,.btn-next,.btn-back{
+                padding:12px 20px !important;
+                font-size:1em !important;
+                margin:6px !important;
+                width:100% !important;
+                max-width:280px !important;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .heart {
-            font-size: 3em;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .score {
-            margin-top: 20px;
-            font-size: 1.3em;
-            color: #ff1493;
-            font-weight: bold;
-            text-shadow: 0 0 10px #ff1493;
-        }
-
-        .button-group {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
+            .button-group{flex-direction:column;align-items:center;}
         }
     </style>
 </head>
@@ -206,10 +110,8 @@
         <div class="heart">❤️</div>
         <h1>Loving Machine</h1>
         <p class="subtitle">Pyaar bhari baatein sunne ka time! 💕✨</p>
-        
-        <div class="warning">
-            💕 Get ready for some wholesome Hinglish love! 💕
-        </div>
+
+        <div class="warning">💕 Get ready for some wholesome Hinglish love! 💕</div>
 
         <div class="input-section">
             <input type="text" id="loveNameInput" placeholder="Apna naam daaliye (ya kisi ko compliment karna hai)">
@@ -220,24 +122,18 @@
             <button class="btn" onclick="getRomanticLine()">😍 Romantic Line 😍</button>
             <button class="btn btn-next hidden" id="loveNextBtn" onclick="getNextLove()">⚡ Next Love ⚡</button>
         </div>
-        
+
         <a href="index.html" class="btn btn-back">🏠 Back to Home</a>
 
-        <div id="loveBox" class="love-box hidden">
-            <p id="loveText"></p>
-        </div>
+        <div id="loveBox" class="love-box hidden"><p id="loveText"></p></div>
+        <div id="loveScoreBox" class="score hidden">Love Level: <span id="loveLevel"></span></div>
 
-        <div id="loveScoreBox" class="score hidden">
-            Love Level: <span id="loveLevel"></span>
-        </div>
-        
         <div class="made-by">Made by Mine Fire Bro</div>
     </div>
 
 <script>
-    let lastLoveType = 'sweet';
-
-    const sweetCompliments = [
+    let lastLoveType='sweet';
+    const sweetCompliments=[
         "{name} ji, aap itne pyaare hain ki phool bhi jealous ho jaate hain! 🌸",
         "Arre {name}, aapki smile dekh kar din bhi bright ho jaata hai! ✨😊",
         "{name} ji, aapka positive vibe itna strong hai ki negativity bhi bhaag jaati hai! 💫",
@@ -254,8 +150,7 @@
         "{name}, aap itne loyal hain ki dogs bhi inspire ho jaate hain! 🐕",
         "{name} ji, aapke hone se hi life colorful lagti hai! 🎨💕"
     ];
-
-    const romanticLines = [
+    const romanticLines=[
         "{name}, aapke bina coffee bhi feeki lagti hai! Aap hi toh meri sugar hain! ☕💕",
         "Arre {name}, aapki aankhon mein toh poora universe chhupa hai! 🌌✨",
         "{name} ji, jab aap muskuraate hain na, toh lagta hai jaise music baj raha ho! 🎵😍",
@@ -272,51 +167,36 @@
         "{name}, aap itne wonderful hain ki rainbow bhi dull lagta hai aapke saamne! 🌈❤️",
         "{name} ji, aap meri playlist ka favorite song hain! 🎵💗"
     ];
-
-    function getSweetCompliment() {
-        lastLoveType = 'sweet';
-        const name = document.getElementById('loveNameInput').value.trim() || 'Dost';
-        const love = sweetCompliments[Math.floor(Math.random() * sweetCompliments.length)];
-        displayLove(love.replace(/{name}/g, name), '💕💕💕💕💕');
+    function getSweetCompliment(){
+        lastLoveType='sweet';
+        const name=document.getElementById('loveNameInput').value.trim()||'Dost';
+        const love=sweetCompliments[Math.floor(Math.random()*sweetCompliments.length.length)];
+        displayLove(love.replace(/{name}/g,name),'💕💕💕💕💕');
     }
-
-    function getRomanticLine() {
-        lastLoveType = 'romantic';
-        const name = document.getElementById('loveNameInput').value.trim() || 'Jaan';
-        const love = romanticLines[Math.floor(Math.random() * romanticLines.length)];
-        displayLove(love.replace(/{name}/g, name), '😍❤️😍❤️😍');
+    function getRomanticLine(){
+        lastLoveType='romantic';
+        const name=document.getElementById('loveNameInput').value.trim()||'Jaan';
+        const love=romanticLines[Math.floor(Math.random()*romanticLines.length)];
+        displayLove(love.replace(/{name}/g,name),'😍❤️😍❤️😍');
     }
-
-    function getNextLove() {
-        if (lastLoveType === 'sweet') {
-            getSweetCompliment();
-        } else {
-            getRomanticLine();
-        }
+    function getNextLove(){
+        if(lastLoveType==='sweet') getSweetCompliment();
+        else getRomanticLine();
     }
-
-    function displayLove(text, level) {
-        const loveBox = document.getElementById('loveBox');
-        const loveText = document.getElementById('loveText');
-        const loveScoreBox = document.getElementById('loveScoreBox');
-        const loveLevel = document.getElementById('loveLevel');
-        const loveNextBtn = document.getElementById('loveNextBtn');
-
-        loveText.textContent = text;
-        loveLevel.textContent = level;
-        
+    function displayLove(text,level){
+        const loveBox=document.getElementById('loveBox');
+        const loveText=document.getElementById('loveText');
+        const loveScoreBox=document.getElementById('loveScoreBox');
+        const loveLevel=document.getElementById('loveLevel');
+        const loveNextBtn=document.getElementById('loveNextBtn');
+        loveText.textContent=text;
+        loveLevel.textContent=level;
         loveBox.classList.remove('hidden');
         loveScoreBox.classList.remove('hidden');
         loveNextBtn.classList.remove('hidden');
-        
-        loveBox.style.animation = 'none';
-        setTimeout(() => {
-            loveBox.style.animation = 'slideIn 0.5s ease-out';
-        }, 10);
+        loveBox.style.animation='none';
+        setTimeout(()=>{loveBox.style.animation='slideIn .5s ease-out';},10);
     }
 </script>
-
 </body>
-
 </html>
-
