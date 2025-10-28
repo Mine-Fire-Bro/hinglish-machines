@@ -6,131 +6,99 @@
     <meta name="description" content="Hinglish Machines - Get roasted or loved in Hinglish! Ultimate entertainment by Mine Fire Bro">
     <title>Hinglish Machines - Roast & Love Machine</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #000000 0%, #434343 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            font-family:'Arial',sans-serif;
+            background:linear-gradient(135deg,#000 0%,#434343 100%);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
         }
-
         .container {
-            background: rgba(20, 20, 20, 0.95);
-            border: 3px solid #00ffff;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 700px;
-            width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 255, 255, 0.5);
-            text-align: center;
-            position: relative;
+            background:rgba(20,20,20,.95);
+            border:3px solid #00ffff;
+            border-radius:20px;
+            padding:40px;
+            max-width:700px;
+            width:100%;
+            box-shadow:0 20px 60px rgba(0,255,255,.5);
+            text-align:center;
+            position:relative;
         }
-
         .made-by {
-            position: absolute;
-            bottom: 15px;
-            right: 20px;
-            color: #00ffff;
-            font-size: 0.9em;
-            font-weight: bold;
-            text-shadow: 0 0 5px #00ffff;
+            position:absolute; bottom:15px; right:20px;
+            color:#00ffff; font-size:.9em; font-weight:bold;
+            text-shadow:0 0 5px #00ffff;
         }
-
-        .home-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
+        .home-icon {font-size:4em; margin-bottom:20px; animation:bounce 2s infinite;}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
         h1 {
-            color: #00ffff;
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-            animation: glowCyan 2s infinite;
+            color:#00ffff; font-size:3em; margin-bottom:10px;
+            text-shadow:0 0 10px #00ffff,0 0 20px #00ffff;
+            animation:glowCyan 2s infinite;
         }
-
-        @keyframes glowCyan {
-            0%, 100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
-            50% { text-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff; }
+        @keyframes glowCyan{
+            0%,100%{text-shadow:0 0 10px #00ffff,0 0 20px #00ffff}
+            50%{text-shadow:0 0 20px #00ffff,0 0 30px #00ffff,0 0 40px #00ffff}
         }
+        .subtitle{color:#00ffff;margin-bottom:40px;font-size:1.3em;font-weight:bold;}
 
-        .subtitle {
-            color: #00ffff;
-            margin-bottom: 40px;
-            font-size: 1.3em;
-            font-weight: bold;
+        /* ---------- RESPONSIVE BUTTONS ---------- */
+        .home-btn{
+            background:linear-gradient(135deg,#00ffff 0%,#00cccc 100%);
+            color:#000; border:3px solid #fff;
+            padding:16px 32px; font-size:1.2em;
+            border-radius:15px; cursor:pointer;
+            transition:all .3s; font-weight:bold;
+            margin:12px; box-shadow:0 5px 15px rgba(0,255,255,.4);
+            width:85%; max-width:380px;
+            text-decoration:none; display:inline-block;
         }
-
-        .home-btn {
-            background: linear-gradient(135deg, #00ffff 0%, #00cccc 100%);
-            color: #000;
-            border: 3px solid #fff;
-            padding: 20px 40px;
-            font-size: 1.3em;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            margin: 15px;
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
-            width: 80%;
-            max-width: 400px;
-            text-decoration: none;
-            display: inline-block;
+        .home-btn:hover{
+            transform:translateY(-5px);
+            box-shadow:0 10px 25px rgba(0,255,255,.6);
+            background:linear-gradient(135deg,#00cccc 0%,#009999 100%);
         }
-
-        .home-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.6);
-            background: linear-gradient(135deg, #00cccc 0%, #009999 100%);
+        .home-btn.love{
+            background:linear-gradient(135deg,#ff1493 0%,#ff69b4 100%);
+            box-shadow:0 5px 15px rgba(255,20,147,.4);
         }
-
-        .home-btn.love {
-            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
-            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        .home-btn.love:hover{box-shadow:0 10px 25px rgba(255,20,147,.6);}
+        .home-btn.youtube{
+            background:linear-gradient(135deg,#FF0000 0%,#CC0000 100%);
+            box-shadow:0 5px 15px rgba(255,0,0,.4); color:#fff;
         }
+        .home-btn.youtube:hover{box-shadow:0 10px 25px rgba(255,0,0,.6);}
 
-        .home-btn.love:hover {
-            box-shadow: 0 10px 25px rgba(255, 20, 147, 0.6);
-        }
-
-        .home-btn.youtube {
-            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
-            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
-            color: #fff;
-        }
-
-        .home-btn.youtube:hover {
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.6);
+        /* ---------- MOBILE ---------- */
+        @media (max-width:480px){
+            .container{padding:25px;}
+            h1{font-size:2.4em;}
+            .subtitle{font-size:1.1em;}
+            .home-btn{
+                padding:14px 20px !important;
+                font-size:1.1em !important;
+                margin:10px !important;
+                width:90% !important;
+                max-width:320px !important;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="home-icon">🔥�❤️</div>
+        <div class="home-icon">🔥❤️</div>
         <h1>Hinglish Machines</h1>
         <p class="subtitle">Choose Karo Apna Experience! 😈</p>
-        
+
         <a href="roast.html" class="home-btn">💀 Roasting Machine 💀</a>
         <a href="love.html" class="home-btn love">❤️ Loving Machine ❤️</a>
-        <a href="https://www.youtube.com/@MFB_Mods" target="_blank" class="home-btn youtube">
+        <a href="https://youtube.com/@yourchannelname" target="_blank" class="home-btn youtube">
             ▶️ YouTube Channel ▶️
         </a>
-        
+
         <div class="made-by">Made by Mine Fire Bro</div>
     </div>
 </body>
