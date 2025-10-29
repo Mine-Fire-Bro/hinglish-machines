@@ -6,106 +6,399 @@
     <meta name="description" content="Get loved in Hinglish! Sweet compliments and romantic lines by Mine Fire Bro">
     <title>Loving Machine - Hinglish Machines</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{
-            font-family:'Arial',sans-serif;
-            background:linear-gradient(135deg,#000 0%,#434343 100%);
-            min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;
-        }
-        .container{
-            background:rgba(20,20,20,.95);border:3px solid #ff1493;
-            border-radius:20px;padding:40px;max-width:700px;width:100%;
-            box-shadow:0 20px 60px rgba(255,20,147,.5);text-align:center;position:relative;
-        }
-        .made-by{position:absolute;bottom:15px;right:20px;color:#ff69b4;font-size:.9em;font-weight:bold;text-shadow:0 0 5px #ff1493;}
-        h1{
-            color:#ff1493;font-size:2.8em;margin-bottom:10px;
-            text-shadow:0 0 10px #ff1493,0 0 20px #ff1493;animation:glow 2s infinite;
-        }
-        @keyframes glow{
-            0%,100%{text-shadow:0 0 10px #ff1493,0 0 20px #ff1493}
-            50%{text-shadow:0 0 20px #ff1493,0 0 30px #ff1493,0 0 40px #ff1493}
-        }
-        .subtitle{color:#ff69b4;margin-bottom:30px;font-size:1.2em;font-weight:bold;}
-        .warning{
-            background:rgba(255,20,147,.2);border:2px solid #ff1493;color:#fff;
-            padding:15px;border-radius:10px;margin-bottom:20px;font-size:.9em;
-        }
-        .input-section{margin-bottom:30px;}
-        input{
-            width:100%;padding:15px;font-size:1.1em;border:3px solid #ff1493;
-            border-radius:10px;outline:none;background:rgba(0,0,0,.5);color:#fff;
-            transition:all .3s;
-        }
-        input::placeholder{color:#999;}
-        input:focus{
-            border-color:#ff69b4;transform:scale(1.02);
-            box-shadow:0 0 20px rgba(255,20,147,.5);
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0e27;
+            color: #e8eaed;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
         }
 
-        /* ---------- BUTTONS ---------- */
-        .btn{
-            background:linear-gradient(135deg,#ff1493 0%,#ff69b4 100%);
-            color:#fff;border:2px solid #fff;
-            padding:14px 28px;font-size:1.05em;
-            border-radius:10px;cursor:pointer;transition:all .3s;
-            font-weight:bold;margin:8px;
-            box-shadow:0 5px 15px rgba(255,20,147,.4);
-            min-height:48px;display:inline-flex;align-items:center;justify-content:center;
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 20, 147, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
-        .btn:hover{
-            transform:translateY(-3px);
-            box-shadow:0 8px 20px rgba(255,20,147,.6);
-            background:linear-gradient(135deg,#ff69b4 0%,#ff1493 100%);
-        }
-        .btn-next{
-            background:linear-gradient(135deg,#444 0%,#222 100%);
-            border:2px solid #ff1493;
-        }
-        .btn-next:hover{background:linear-gradient(135deg,#555 0%,#333 100%);}
-        .btn-back{
-            background:linear-gradient(135deg,#333 0%,#111 100%);
-            border:2px solid #666;font-size:1em;padding:10px 20px;
-            text-decoration:none;display:inline-block;
-        }
-        .btn-back:hover{
-            background:linear-gradient(135deg,#444 0%,#222 100%);
-            border-color:#999;
-        }
-        .button-group{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
 
-        .love-box{
-            background:linear-gradient(135deg,#1a0011 0%,#330022 100%);
-            color:#fff;border:3px solid #ff1493;padding:30px;
-            border-radius:15px;margin-top:30px;min-height:150px;
-            display:flex;align-items:center;justify-content:center;
-            font-size:1.4em;line-height:1.8;
-            box-shadow:0 10px 30px rgba(255,20,147,.3);
-            animation:slideIn .5s ease-out;
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 20, 147, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 20, 147, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
         }
-        @keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        .hidden{display:none;}
-        .heart{font-size:3em;animation:bounce 2s infinite;}
-        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        .score{margin-top:20px;font-size:1.3em;color:#ff1493;font-weight:bold;text-shadow:0 0 10px #ff1493;}
 
-        /* ---------- MOBILE ---------- */
-        @media (max-width:480px){
-            .container{padding:25px;margin:10px;}
-            h1{font-size:2.2em;}
-            .subtitle{font-size:1.1em;}
-            .btn,.btn-next,.btn-back{
-                padding:12px 20px !important;
-                font-size:1em !important;
-                margin:6px !important;
-                width:100% !important;
-                max-width:280px !important;
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .glow-effect {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: glowMove 10s ease-in-out infinite;
+        }
+
+        .glow-1 {
+            background: #ff1493;
+            top: 10%;
+            left: 10%;
+        }
+
+        .glow-2 {
+            background: #ff69b4;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        @keyframes glowMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+            animation: starTwinkle linear infinite;
+        }
+
+        .particle.small {
+            width: 1px;
+            height: 1px;
+        }
+
+        .particle.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+        }
+
+        .particle.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+        }
+
+        .particle.pink {
+            background: #ff1493;
+            box-shadow: 0 0 6px rgba(255, 20, 147, 0.9);
+        }
+
+        .particle.pink2 {
+            background: #ff69b4;
+            box-shadow: 0 0 6px rgba(255, 105, 180, 0.9);
+        }
+
+        .particle.pink3 {
+            background: #ffb6c1;
+            box-shadow: 0 0 6px rgba(255, 182, 193, 0.9);
+        }
+
+        @keyframes starTwinkle {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
             }
-            .button-group{flex-direction:column;align-items:center;}
+            5% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 20, 147, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 
+                0 20px 60px rgba(255, 20, 147, 0.3),
+                0 0 0 1px rgba(255, 20, 147, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff1493, #ff69b4, transparent);
+            animation: borderSlide 3s linear infinite;
+        }
+
+        @keyframes borderSlide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(33.33%); }
+        }
+
+        .made-by {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            color: #ff69b4;
+            font-size: .9em;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 20, 147, 0.5);
+        }
+
+        .heart {
+            font-size: 3em;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.5));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #e8eaed;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff1493, #ff69b4, #ffb6c1);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+            letter-spacing: -2px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            color: #ff69b4;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .warning {
+            background: rgba(255, 20, 147, 0.15);
+            border: 2px solid rgba(255, 20, 147, 0.4);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: .9em;
+            backdrop-filter: blur(10px);
+        }
+
+        .input-section { margin-bottom: 30px; }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid rgba(255, 20, 147, 0.3);
+            border-radius: 10px;
+            outline: none;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            transition: all .3s;
+            backdrop-filter: blur(5px);
+        }
+
+        input::placeholder { color: #999; }
+
+        input:focus {
+            border-color: #ff1493;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.05em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: bold;
+            margin: 8px;
+            box-shadow: 
+                0 5px 15px rgba(255, 20, 147, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 20px rgba(255, 20, 147, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #444, #222);
+            border: 2px solid #ff1493;
+            box-shadow: 0 5px 15px rgba(68, 68, 68, 0.4);
+        }
+
+        .btn-next:hover {
+            background: linear-gradient(135deg, #555, #333);
+            box-shadow: 0 8px 20px rgba(68, 68, 68, 0.6);
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #333, #111);
+            border: 2px solid #666;
+            font-size: 1em;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(51, 51, 51, 0.4);
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #444, #222);
+            border-color: #999;
+            box-shadow: 0 8px 20px rgba(68, 68, 68, 0.6);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .love-box {
+            background: rgba(26, 0, 17, 0.8);
+            color: #fff;
+            border: 2px solid rgba(255, 20, 147, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            line-height: 1.8;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+            animation: slideIn .5s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden { display: none; }
+
+        .score {
+            margin-top: 20px;
+            font-size: 1.3em;
+            color: #ff69b4;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 25px; margin: 10px; }
+            h1 { font-size: 2.2em; }
+            .subtitle { font-size: 1.1em; }
+            .btn, .btn-next, .btn-back {
+                padding: 12px 20px;
+                font-size: 1em;
+                margin: 6px;
+                width: 100%;
+                max-width: 280px;
+            }
+            .button-group { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
+    <div class="grid-background"></div>
+    <div class="particles-container" id="particlesContainer"></div>
+    <div class="glow-effect glow-1"></div>
+    <div class="glow-effect glow-2"></div>
+
     <div class="container">
         <div class="heart">❤️</div>
         <h1>Loving Machine</h1>
@@ -131,93 +424,114 @@
         <div class="made-by">Made by Mine Fire Bro</div>
     </div>
 
-<script>
-    let lastLoveType = 'sweet';
-    const sweetCompliments = [
-        "{name} ji, aap itne pyaare hain ki phool bhi jealous ho jaate hain! 🌸",
-        "Arre {name}, aapki smile dekh kar din bhi bright ho jaata hai! ✨😊",
-        "{name} ji, aapka positive vibe itna strong hai ki negativity bhi bhaag jaati hai! 💫",
-        "Dekhiye {name}, aap jitna sochte hain usse kahin zyada valuable hain! 💎",
-        "{name} ji, aapki personality itni sweet hai ki sugar bhi competition feel karta hai! 🍬",
-        "Arey {name}, aap jaise genuine log milna mushkil hai! Aap bahut precious hain! 💝",
-        "{name} ji, aapki kindness dil ko choo jaati hai! Hamesha aise hi bane rahiye! 🌟",
-        "{name}, aap itne strong hain ki pahaad bhi inspire ho jaate hain! ⛰️",
-        "{name} ji, aapka presence itna peaceful hai ki meditation bhi seekh le! 🧘",
-        "Arre {name}, jahan aap jaate hain, wahan ka atmosphere hi badal jaata hai! ✨",
-        "{name}, aapki energy itni positive hai ki sadness bhi dur bhaag jaati hai! 🌈",
-        "Dekhiye {name}, aap itne talented hain ki skills bhi fan hain aapke! 🎨",
-        "{name} ji, aapka dil itna pure hai ki farishte bhi seekhte hain aapse! 👼",
-        "{name}, aap itne loyal hain ki dogs bhi inspire ho jaate hain! 🐕",
-        "{name} ji, aapke hone se hi life colorful lagti hai! 🎨💕"
-    ];
-    const romanticLines = [
-        "{name}, aapke bina coffee bhi feeki lagti hai! Aap hi toh meri sugar hain! ☕💕",
-        "Arre {name}, aapki aankhon mein toh poora universe chhupa hai! 🌌✨",
-        "{name} ji, jab aap muskuraate hain na, toh lagta hai jaise music baj raha ho! 🎵😍",
-        "Dekhiye {name}, aap itne special hain ki dictionary mein bhi aapka naam hona chahiye! 📖💝",
-        "{name}, aapke saath waqt itna tez nikal jaata hai ki ghadi bhi hairaan hoti hai! ⏰💫",
-        "Arey {name}, aapki awaaz itni meethi hai ki gaane bhi jealous ho jaate hain! 🎶😊",
-        "{name} ji, aap meri zindagi ka sabse khoobsurat notification hain! 📱💗",
-        "{name}, aapke bina pizza bhi boring lagta hai! Aap hi toh topping hain! 🍕❤️",
-        "{name}, aapki hasi sunke dil garden garden ho jaata hai! 🌺😄",
-        "Arre {name}, aap itne cute hain ki teddy bears bhi haar maan jaate hain! 🧸💕",
-        "{name} ji, aapke thoughts itne khoobsurat hain ki poetry bhi likhi jaati hai aapse inspire hokar! 📝✨",
-        "Dekhiye {name}, aap meri life ka sabse beautiful chapter hain! 📚💝",
-        "{name} ji, aapke saath har moment special ban jaata hai! ✨💫",
-        "{name}, aap itne wonderful hain ki rainbow bhi dull lagta hai aapke saamne! 🌈❤️",
-        "{name} ji, aap meri playlist ka favorite song hain! 🎵💗"
-    ];
-
-    function getSweetCompliment() {
-        lastLoveType = 'sweet';
-        generateLove(sweetCompliments, 'Dost', '💕💕💕💕💕');
-    }
-
-    function getRomanticLine() {
-        lastLoveType = 'romantic';
-        generateLove(romanticLines, 'Jaan', '😍❤️😍❤️😍');
-    }
-
-    function getNextLove() {
-        if (lastLoveType === 'sweet') {
-            getSweetCompliment();
-        } else {
-            getRomanticLine();
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particlesContainer');
+            const colors = ['', 'pink', 'pink2', 'pink3'];
+            const sizes = ['small', 'small', 'medium', 'large'];
+            
+            for (let i = 0; i < 150; i++) {
+                const particle = document.createElement('div');
+                const colorClass = colors[Math.floor(Math.random() * colors.length)];
+                const sizeClass = sizes[Math.floor(Math.random() * sizes.length)];
+                
+                particle.className = `particle ${sizeClass} ${colorClass}`;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * -100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (20 + Math.random() * 15) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
         }
-    }
-
-    function generateLove(array, defaultName, levelEmoji) {
-        const nameInput = document.getElementById('loveNameInput').value.trim();
-        const name = nameInput || defaultName;
-
-        // Fixed: Use array.length, not array.length.length
-        const randomIndex = Math.floor(Math.random() * array.length);
-        const love = array[randomIndex];
-
-        displayLove(love.replace(/{name}/g, name), levelEmoji);
-    }
-
-    function displayLove(text, level) {
-        const loveBox = document.getElementById('loveBox');
-        const loveText = document.getElementById('loveText');
-        const loveScoreBox = document.getElementById('loveScoreBox');
-        const loveLevel = document.getElementById('loveLevel');
-        const loveNextBtn = document.getElementById('loveNextBtn');
-
-        loveText.textContent = text;
-        loveLevel.textContent = level;
         
-        // Show elements
-        loveBox.classList.remove('hidden');
-        loveScoreBox.classList.remove('hidden');
-        loveNextBtn.classList.remove('hidden');
+        createParticles();
 
-        // Reset animation
-        loveBox.style.animation = 'none';
-        loveBox.offsetHeight; // Trigger reflow
-        loveBox.style.animation = 'slideIn 0.5s ease-out';
-    }
-</script>
+        let lastLoveType = 'sweet';
+        const sweetCompliments = [
+            "{name} ji, aap itne pyaare hain ki phool bhi jealous ho jaate hain! 🌸",
+            "Arre {name}, aapki smile dekh kar din bhi bright ho jaata hai! ✨😊",
+            "{name} ji, aapka positive vibe itna strong hai ki negativity bhi bhaag jaati hai! 💫",
+            "Dekhiye {name}, aap jitna sochte hain usse kahin zyada valuable hain! 💎",
+            "{name} ji, aapki personality itni sweet hai ki sugar bhi competition feel karta hai! 🍬",
+            "Arey {name}, aap jaise genuine log milna mushkil hai! Aap bahut precious hain! 💝",
+            "{name} ji, aapki kindness dil ko choo jaati hai! Hamesha aise hi bane rahiye! 🌟",
+            "{name}, aap itne strong hain ki pahaad bhi inspire ho jaate hain! ⛰️",
+            "{name} ji, aapka presence itna peaceful hai ki meditation bhi seekh le! 🧘",
+            "Arre {name}, jahan aap jaate hain, wahan ka atmosphere hi badal jaata hai! ✨",
+            "{name}, aapki energy itni positive hai ki sadness bhi dur bhaag jaati hai! 🌈",
+            "Dekhiye {name}, aap itne talented hain ki skills bhi fan hain aapke! 🎨",
+            "{name} ji, aapka dil itna pure hai ki farishte bhi seekhte hain aapse! 👼",
+            "{name}, aap itne loyal hain ki dogs bhi inspire ho jaate hain! 🐕",
+            "{name} ji, aapke hone se hi life colorful lagti hai! 🎨💕"
+        ];
+        const romanticLines = [
+            "{name}, aapke bina coffee bhi feeki lagti hai! Aap hi toh meri sugar hain! ☕💕",
+            "Arre {name}, aapki aankhon mein toh poora universe chhupa hai! 🌌✨",
+            "{name} ji, jab aap muskuraate hain na, toh lagta hai jaise music baj raha ho! 🎵😍",
+            "Dekhiye {name}, aap itne special hain ki dictionary mein bhi aapka naam hona chahiye! 📖💝",
+            "{name}, aapke saath waqt itna tez nikal jaata hai ki ghadi bhi hairaan hoti hai! ⏰💫",
+            "Arey {name}, aapki awaaz itni meethi hai ki gaane bhi jealous ho jaate hain! 🎶😊",
+            "{name} ji, aap meri zindagi ka sabse khoobsurat notification hain! 📱💗",
+            "{name}, aapke bina pizza bhi boring lagta hai! Aap hi toh topping hain! 🍕❤️",
+            "{name}, aapki hasi sunke dil garden garden ho jaata hai! 🌺😄",
+            "Arre {name}, aap itne cute hain ki teddy bears bhi haar maan jaate hain! 🧸💕",
+            "{name} ji, aapke thoughts itne khoobsurat hain ki poetry bhi likhi jaati hai aapse inspire hokar! 📝✨",
+            "Dekhiye {name}, aap meri life ka sabse beautiful chapter hain! 📚💝",
+            "{name} ji, aapke saath har moment special ban jaata hai! ✨💫",
+            "{name}, aap itne wonderful hain ki rainbow bhi dull lagta hai aapke saamne! 🌈❤️",
+            "{name} ji, aap meri playlist ka favorite song hain! 🎵💗"
+        ];
+
+        function getSweetCompliment() {
+            lastLoveType = 'sweet';
+            generateLove(sweetCompliments, 'Dost', '💕💕💕💕💕');
+        }
+
+        function getRomanticLine() {
+            lastLoveType = 'romantic';
+            generateLove(romanticLines, 'Jaan', '😍❤️😍❤️😍');
+        }
+
+        function getNextLove() {
+            if (lastLoveType === 'sweet') {
+                getSweetCompliment();
+            } else {
+                getRomanticLine();
+            }
+        }
+
+        function generateLove(array, defaultName, levelEmoji) {
+            const nameInput = document.getElementById('loveNameInput').value.trim();
+            const name = nameInput || defaultName;
+
+            const randomIndex = Math.floor(Math.random() * array.length);
+            const love = array[randomIndex];
+
+            displayLove(love.replace(/{name}/g, name), levelEmoji);
+        }
+
+        function displayLove(text, level) {
+            const loveBox = document.getElementById('loveBox');
+            const loveText = document.getElementById('loveText');
+            const loveScoreBox = document.getElementById('loveScoreBox');
+            const loveLevel = document.getElementById('loveLevel');
+            const loveNextBtn = document.getElementById('loveNextBtn');
+
+            loveText.textContent = text;
+            loveLevel.textContent = level;
+            
+            loveBox.classList.remove('hidden');
+            loveScoreBox.classList.remove('hidden');
+            loveNextBtn.classList.remove('hidden');
+
+            loveBox.style.animation = 'none';
+            loveBox.offsetHeight;
+            loveBox.style.animation = 'slideIn 0.5s ease-out';
+        }
+    </script>
+
     <script>
 (function(ghk){
 var d = document,
@@ -229,7 +543,7 @@ s.async = true;
 s.referrerPolicy = 'no-referrer-when-downgrade';
 l.parentNode.insertBefore(s, l);
 })({})
-</script>
+    </script>
     <script>
 (function(word){
 var d = document,
@@ -241,9 +555,6 @@ s.async = true;
 s.referrerPolicy = 'no-referrer-when-downgrade';
 l.parentNode.insertBefore(s, l);
 })({})
-</script>
+    </script>
 </body>
 </html>
-
-
-
