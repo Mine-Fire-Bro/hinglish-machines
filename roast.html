@@ -6,106 +6,399 @@
     <meta name="description" content="Get roasted in Hinglish! Brutal roasts and dark humor machine by Mine Fire Bro">
     <title>Roasting Machine - Hinglish Machines</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{
-            font-family:'Arial',sans-serif;
-            background:linear-gradient(135deg,#000 0%,#434343 100%);
-            min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;
-        }
-        .container{
-            background:rgba(20,20,20,.95);border:3px solid #ff0000;
-            border-radius:20px;padding:40px;max-width:700px;width:100%;
-            box-shadow:0 20px 60px rgba(255,0,0,.5);text-align:center;position:relative;
-        }
-        .made-by{position:absolute;bottom:15px;right:20px;color:#ff6b6b;font-size:.9em;font-weight:bold;text-shadow:0 0 5px #ff0000;}
-        h1{
-            color:#ff0000;font-size:2.8em;margin-bottom:10px;
-            text-shadow:0 0 10px #ff0000,0 0 20px #ff0000;animation:glow 2s infinite;
-        }
-        @keyframes glow{
-            0%,100%{text-shadow:0 0 10px #ff0000,0 0 20px #ff0000}
-            50%{text-shadow:0 0 20px #ff0000,0 0 30px #ff0000,0 0 40px #ff0000}
-        }
-        .subtitle{color:#ff6b6b;margin-bottom:30px;font-size:1.2em;font-weight:bold;}
-        .warning{
-            background:rgba(255,0,0,.2);border:2px solid #ff0000;color:#fff;
-            padding:15px;border-radius:10px;margin-bottom:20px;font-size:.9em;
-        }
-        .input-section{margin-bottom:30px;}
-        input{
-            width:100%;padding:15px;font-size:1.1em;border:3px solid #ff0000;
-            border-radius:10px;outline:none;background:rgba(0,0,0,.5);color:#fff;
-            transition:all .3s;
-        }
-        input::placeholder{color:#999;}
-        input:focus{
-            border-color:#ff6b6b;transform:scale(1.02);
-            box-shadow:0 0 20px rgba(255,0,0,.5);
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0e27;
+            color: #e8eaed;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 20px;
         }
 
-        /* ---------- BUTTONS ---------- */
-        .btn{
-            background:linear-gradient(135deg,#ff0000 0%,#cc0000 100%);
-            color:#fff;border:2px solid #fff;
-            padding:14px 28px;font-size:1.05em;
-            border-radius:10px;cursor:pointer;transition:all .3s;
-            font-weight:bold;margin:8px;
-            box-shadow:0 5px 15px rgba(255,0,0,.4);
-            min-height:48px;display:inline-flex;align-items:center;justify-content:center;
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(204, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(230, 0, 0, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
-        .btn:hover{
-            transform:translateY(-3px);
-            box-shadow:0 8px 20px rgba(255,0,0,.6);
-            background:linear-gradient(135deg,#cc0000 0%,#990000 100%);
-        }
-        .btn-next{
-            background:linear-gradient(135deg,#444 0%,#222 100%);
-            border:2px solid #ff0000;
-        }
-        .btn-next:hover{background:linear-gradient(135deg,#555 0%,#333 100%);}
-        .btn-back{
-            background:linear-gradient(135deg,#333 0%,#111 100%);
-            border:2px solid #666;font-size:1em;padding:10px 20px;
-            text-decoration:none;display:inline-block;
-        }
-        .btn-back:hover{
-            background:linear-gradient(135deg,#444 0%,#222 100%);
-            border-color:#999;
-        }
-        .button-group{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;}
 
-        .roast-box{
-            background:linear-gradient(135deg,#1a0000 0%,#330000 100%);
-            color:#fff;border:3px solid #ff0000;padding:30px;
-            border-radius:15px;margin-top:30px;min-height:150px;
-            display:flex;align-items:center;justify-content:center;
-            font-size:1.4em;line-height:1.8;
-            box-shadow:0 10px 30px rgba(255,0,0,.3);
-            animation:slideIn .5s ease-out;
+        .grid-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            animation: gridMove 20s linear infinite;
         }
-        @keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        .hidden{display:none;}
-        .skull{font-size:3em;animation:bounce 2s infinite;}
-        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-        .score{margin-top:20px;font-size:1.3em;color:#ff0000;font-weight:bold;text-shadow:0 0 10px #ff0000;}
 
-        /* ---------- MOBILE ---------- */
-        @media (max-width:480px){
-            .container{padding:25px;margin:10px;}
-            h1{font-size:2.2em;}
-            .subtitle{font-size:1.1em;}
-            .btn,.btn-next,.btn-back{
-                padding:12px 20px !important;
-                font-size:1em !important;
-                margin:6px !important;
-                width:100% !important;
-                max-width:280px !important;
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .glow-effect {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(100px);
+            opacity: 0.3;
+            animation: glowMove 10s ease-in-out infinite;
+        }
+
+        .glow-1 {
+            background: #ff0000;
+            top: 10%;
+            left: 10%;
+        }
+
+        .glow-2 {
+            background: #cc0000;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        @keyframes glowMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+            animation: starTwinkle linear infinite;
+        }
+
+        .particle.small {
+            width: 1px;
+            height: 1px;
+        }
+
+        .particle.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+        }
+
+        .particle.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+        }
+
+        .particle.red {
+            background: #ff0000;
+            box-shadow: 0 0 6px rgba(255, 0, 0, 0.9);
+        }
+
+        .particle.red2 {
+            background: #ff3333;
+            box-shadow: 0 0 6px rgba(255, 51, 51, 0.9);
+        }
+
+        .particle.red3 {
+            background: #cc0000;
+            box-shadow: 0 0 6px rgba(204, 0, 0, 0.9);
+        }
+
+        @keyframes starTwinkle {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
             }
-            .button-group{flex-direction:column;align-items:center;}
+            5% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 
+                0 20px 60px rgba(255, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff0000, #ff3333, transparent);
+            animation: borderSlide 3s linear infinite;
+        }
+
+        @keyframes borderSlide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(33.33%); }
+        }
+
+        .made-by {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            color: #ff6b6b;
+            font-size: .9em;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+
+        .skull {
+            font-size: 3em;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.5));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: #e8eaed;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff0000, #ff3333, #cc0000);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 5s ease infinite;
+            letter-spacing: -2px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            color: #ff6b6b;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .warning {
+            background: rgba(255, 0, 0, 0.15);
+            border: 2px solid rgba(255, 0, 0, 0.4);
+            color: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: .9em;
+            backdrop-filter: blur(10px);
+        }
+
+        .input-section { margin-bottom: 30px; }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 10px;
+            outline: none;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            transition: all .3s;
+            backdrop-filter: blur(5px);
+        }
+
+        input::placeholder { color: #999; }
+
+        input:focus {
+            border-color: #ff0000;
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.05em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: bold;
+            margin: 8px;
+            box-shadow: 
+                0 5px 15px rgba(255, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 20px rgba(255, 0, 0, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #cc0000, #990000);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #444, #222);
+            border: 2px solid #ff0000;
+            box-shadow: 0 5px 15px rgba(68, 68, 68, 0.4);
+        }
+
+        .btn-next:hover {
+            background: linear-gradient(135deg, #555, #333);
+            box-shadow: 0 8px 20px rgba(68, 68, 68, 0.6);
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #333, #111);
+            border: 2px solid #666;
+            font-size: 1em;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(51, 51, 51, 0.4);
+        }
+
+        .btn-back:hover {
+            background: linear-gradient(135deg, #444, #222);
+            border-color: #999;
+            box-shadow: 0 8px 20px rgba(68, 68, 68, 0.6);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .roast-box {
+            background: rgba(26, 0, 0, 0.8);
+            color: #fff;
+            border: 2px solid rgba(255, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            line-height: 1.8;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+            animation: slideIn .5s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hidden { display: none; }
+
+        .score {
+            margin-top: 20px;
+            font-size: 1.3em;
+            color: #ff6b6b;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 25px; margin: 10px; }
+            h1 { font-size: 2.2em; }
+            .subtitle { font-size: 1.1em; }
+            .btn, .btn-next, .btn-back {
+                padding: 12px 20px;
+                font-size: 1em;
+                margin: 6px;
+                width: 100%;
+                max-width: 280px;
+            }
+            .button-group { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
+    <div class="grid-background"></div>
+    <div class="particles-container" id="particlesContainer"></div>
+    <div class="glow-effect glow-1"></div>
+    <div class="glow-effect glow-2"></div>
+
     <div class="container">
         <div class="skull">💀</div>
         <h1>Brutal Roast Machine</h1>
@@ -131,104 +424,124 @@
         <div class="made-by">Made by Mine Fire Bro</div>
     </div>
 
-<script>
-    let lastRoastType='brutal';
-    const brutalRoasts=[
-        "Abe {name} ke chode, teri shakal dekh ke toh Yamraj bhi kehta hai 'bhenchod yeh toh refund piece hai!' 💀",
-        "{name} madarchod, tera IQ itna kam hai ki tera dimaag bhi 'error 404' dikhata hai! Gaandu kahin ka! 🧠",
-        "Arre {name} ke lode, teri personality itni ghatiya hai ki tere parents bhi kehte hain 'condom phat gaya tha bc!' 😂",
-        "Dekh {name} bhosdike, tu itna bekaar hai ki tere future mein bhi 'no results found' likha hai! Chutiye! 🔍",
-        "{name} harami, teri shakal dekh ke plastic surgery bhi suicide kar leti hai! Kamine! 🤮",
-        "Abe {name} gaandu, tu itna ganda hai ki jab tu nahata hai toh paani bhi ganda ho jata hai! Saale! 🚿",
-        "{name} bhosadpappu, teri zindagi itni bekar hai ki sad songs bhi tere liye skip ho jate hain! Madarchod! 🎵",
-        "Bhai {name} chutiye, tera face itna bura hai ki FaceApp bhi crash kar jata hai! Bhenchod! 📱",
-        "{name} ke baal, teri existence hi ek mistake hai - like WhatsApp ka blue tick delete karne ke baad! Chodu! ✔️",
-        "Arre {name} madarchod, tu itna useless hai ki 'Ctrl+Z' bhi tujhe undo nahi kar sakta! Lavde! ⌨️",
-        "{name} bhosdike, teri comedy itni ghatiya hai ki Santa Banta bhi offend ho jate hain! Gaandu! 🤡",
-        "Dekh {name} harami, tera fashion sense itna kharab hai ki beggars bhi tujhe paise dete hain! Chutiye! 👔",
-        "{name} madarchod, tu itna slow hai ki tera 4G bhi 2G ban jata hai! Bewakoof bhenchod! 📶",
-        "Abe {name} ke lode, teri cooking dekh ke Gordon Ramsay bhi kehta hai 'bhenchod yeh kya bana diya!' 🍳",
-        "{name} gaandu, tera brain itna khali hai ki wifi signals bhi bounce ho jate hain! Chodu! 📡",
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particlesContainer');
+            const colors = ['', 'red', 'red2', 'red3'];
+            const sizes = ['small', 'small', 'medium', 'large'];
+            
+            for (let i = 0; i < 150; i++) {
+                const particle = document.createElement('div');
+                const colorClass = colors[Math.floor(Math.random() * colors.length)];
+                const sizeClass = sizes[Math.floor(Math.random() * sizes.length)];
+                
+                particle.className = `particle ${sizeClass} ${colorClass}`;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * -100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (20 + Math.random() * 15) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
 
-        // 🔥 NEW BRUTAL ROASTS ADDED 🔥
-        "{name} bhosdike, tera confidence itna fake hai ki Chinese maal bhi sharma jaye! Chutiye! 🛍️",
-        "Arre {name} madarchod, tu itna loser hai ki 'L' word bhi tujhe salute marta hai! Bhenchod! 🙋‍♂️",
-        "{name} ke lund, tera resume dekh ke job portals bhi 'user not found' dikhate hain! Gaandu! 💼",
-        "Dekh {name} harami, tu itna kanjoos hai ki free advice bhi reject kar deta hai! Chodu! 💸",
-        "{name} chutiye, tera style itna old hai ki museum wale tujhe exhibit karna chahte hain! 🏛️",
-        "Abe {name} gaandu, tera dance dekh ke Michael Jackson bhi grave mein palat jata hai! 🕺💀",
-        "{name} bhosdike, tu itna boring hai ki coma patients bhi tujhse zyada active lagte hain! 😴",
-        "Bhai {name} madarchod, tera singing sunke dogs bhi 'bhagwan ke liye chup ho ja!' kehte hain! 🎤🐶",
-        "{name} ke chode, tera phone itna slow hai ki Nokia 3310 bhi tujhe roast kare! 📱🔥",
-        "{name} lodu, tera love life itna dry hai ki Sahara Desert bhi jealous ho jata hai! 🏜️❤️",
-        "Arre {name} harami, tu itna fake hai ki onion bhi tujhe kaatne se pehle ro deta hai! 😭🧅",
-        "{name} gaandu, tera gym membership itna waste hai ki dumbbells bhi tujhe use karna bhool gaye! 🏋️‍♂️",
-        "{name} madarchod, tu itna unlucky hai ki 'good luck' bhi tujhe dekh ke palat jata hai! 🍀"
-    ];
+        let lastRoastType='brutal';
+        const brutalRoasts=[
+            "Abe {name} ke chode, teri shakal dekh ke toh Yamraj bhi kehta hai 'bhenchod yeh toh refund piece hai!' 💀",
+            "{name} madarchod, tera IQ itna kam hai ki tera dimaag bhi 'error 404' dikhata hai! Gaandu kahin ka! 🧠",
+            "Arre {name} ke lode, teri personality itni ghatiya hai ki tere parents bhi kehte hain 'condom phat gaya tha bc!' 😂",
+            "Dekh {name} bhosdike, tu itna bekaar hai ki tere future mein bhi 'no results found' likha hai! Chutiye! 🔍",
+            "{name} harami, teri shakal dekh ke plastic surgery bhi suicide kar leti hai! Kamine! 🤮",
+            "Abe {name} gaandu, tu itna ganda hai ki jab tu nahata hai toh paani bhi ganda ho jata hai! Saale! 🚿",
+            "{name} bhosadpappu, teri zindagi itni bekar hai ki sad songs bhi tere liye skip ho jate hain! Madarchod! 🎵",
+            "Bhai {name} chutiye, tera face itna bura hai ki FaceApp bhi crash kar jata hai! Bhenchod! 📱",
+            "{name} ke baal, teri existence hi ek mistake hai - like WhatsApp ka blue tick delete karne ke baad! Chodu! ✔️",
+            "Arre {name} madarchod, tu itna useless hai ki 'Ctrl+Z' bhi tujhe undo nahi kar sakta! Lavde! ⌨️",
+            "{name} bhosdike, teri comedy itni ghatiya hai ki Santa Banta bhi offend ho jate hain! Gaandu! 🤡",
+            "Dekh {name} harami, tera fashion sense itna kharab hai ki beggars bhi tujhe paise dete hain! Chutiye! 👔",
+            "{name} madarchod, tu itna slow hai ki tera 4G bhi 2G ban jata hai! Bewakoof bhenchod! 📶",
+            "Abe {name} ke lode, teri cooking dekh ke Gordon Ramsay bhi kehta hai 'bhenchod yeh kya bana diya!' 🍳",
+            "{name} gaandu, tera brain itna khali hai ki wifi signals bhi bounce ho jate hain! Chodu! 📡",
+            "{name} bhosdike, tera confidence itna fake hai ki Chinese maal bhi sharma jaye! Chutiye! 🛍️",
+            "Arre {name} madarchod, tu itna loser hai ki 'L' word bhi tujhe salute marta hai! Bhenchod! 🙋‍♂️",
+            "{name} ke lund, tera resume dekh ke job portals bhi 'user not found' dikhate hain! Gaandu! 💼",
+            "Dekh {name} harami, tu itna kanjoos hai ki free advice bhi reject kar deta hai! Chodu! 💸",
+            "{name} chutiye, tera style itna old hai ki museum wale tujhe exhibit karna chahte hain! 🏛️",
+            "Abe {name} gaandu, tera dance dekh ke Michael Jackson bhi grave mein palat jata hai! 🕺💀",
+            "{name} bhosdike, tu itna boring hai ki coma patients bhi tujhse zyada active lagte hain! 😴",
+            "Bhai {name} madarchod, tera singing sunke dogs bhi 'bhagwan ke liye chup ho ja!' kehte hain! 🎤🐶",
+            "{name} ke chode, tera phone itna slow hai ki Nokia 3310 bhi tujhe roast kare! 📱🔥",
+            "{name} lodu, tera love life itna dry hai ki Sahara Desert bhi jealous ho jata hai! 🏜️❤️",
+            "Arre {name} harami, tu itna fake hai ki onion bhi tujhe kaatne se pehle ro deta hai! 😭🧅",
+            "{name} gaandu, tera gym membership itna waste hai ki dumbbells bhi tujhe use karna bhool gaye! 🏋️‍♂️",
+            "{name} madarchod, tu itna unlucky hai ki 'good luck' bhi tujhe dekh ke palat jata hai! 🍀"
+        ];
 
-    const darkRoasts=[
-        "{name} bhai, teri zindagi itni dark hai ki dark web bhi competition feel karta hai! Bhenchod! 🕷️",
-        "Arre {name} madarchod, tere jokes itne dark hain ki standup comedians suicide kar lete hain! 🎤💀",
-        "{name} chutiye, tera future itna dark hai ki black hole bhi jealous ho jata hai! Gaandu! 🌑",
-        "Dekh {name} bhosdike, teri life story itni dark hai ki horror movies bhi inspired hoti hain! 👻",
-        "{name} harami, tera sense of humor itna twisted hai ki psychologists bhi dar jate hain! Madarchod! 🧠",
-        "Abe {name} ke chode, teri personality itni toxic hai ki Chernobyl bhi safe zone lagta hai! ☢️",
-        "{name} bhenchod, tera ex itna smart tha ki breakup ke baad party kiya! Congratulations chutiye! 🎉",
-        "Bhai {name} gaandu, teri zindagi mein itna drama hai ki Netflix ka budget kam pad jata hai! 📺",
-        "{name} madarchod, tu itna unlucky hai ki jab tu lottery jeetta hai tab ticket hi fake nikalta hai! 🎰",
-        "Arre {name} bhosdike, teri death wish itni strong hai ki Final Destination bhi note leti hai! 💀",
-        "{name} chodu, tera karma itna kharab hai ki reincarnation bhi 'payment declined' dikhata hai! 🔄",
-        "Dekh {name} lodu, teri life lessons itne dark hain ki self-help books bhi depressed ho jati hain! 📚",
-        "{name} harami, tera aura itna negative hai ki ghosts bhi tere se dar ke bhaagte hain! Bhenchod! 👻",
-        "Abe {name} madarchod, teri choices itni ghatiya hain ki tera guardian angel bhi resign kar gaya! 😇",
-        "{name} gaandu, tera roast itna dark hai ki comedy clubs mein blackout ho jata hai! Chutiye! 🎭",
+        const darkRoasts=[
+            "{name} bhai, teri zindagi itni dark hai ki dark web bhi competition feel karta hai! Bhenchod! 🕷️",
+            "Arre {name} madarchod, tere jokes itne dark hain ki standup comedians suicide kar lete hain! 🎤💀",
+            "{name} chutiye, tera future itna dark hai ki black hole bhi jealous ho jata hai! Gaandu! 🌑",
+            "Dekh {name} bhosdike, teri life story itni dark hai ki horror movies bhi inspired hoti hain! 👻",
+            "{name} harami, tera sense of humor itna twisted hai ki psychologists bhi dar jate hain! Madarchod! 🧠",
+            "Abe {name} ke chode, teri personality itni toxic hai ki Chernobyl bhi safe zone lagta hai! ☢️",
+            "{name} bhenchod, tera ex itna smart tha ki breakup ke baad party kiya! Congratulations chutiye! 🎉",
+            "Bhai {name} gaandu, teri zindagi mein itna drama hai ki Netflix ka budget kam pad jata hai! 📺",
+            "{name} madarchod, tu itna unlucky hai ki jab tu lottery jeetta hai tab ticket hi fake nikalta hai! 🎰",
+            "Arre {name} bhosdike, teri death wish itni strong hai ki Final Destination bhi note leti hai! 💀",
+            "{name} chodu, tera karma itna kharab hai ki reincarnation bhi 'payment declined' dikhata hai! 🔄",
+            "Dekh {name} lodu, teri life lessons itne dark hain ki self-help books bhi depressed ho jati hain! 📚",
+            "{name} harami, tera aura itna negative hai ki ghosts bhi tere se dar ke bhaagte hain! Bhenchod! 👻",
+            "Abe {name} madarchod, teri choices itni ghatiya hain ki tera guardian angel bhi resign kar gaya! 😇",
+            "{name} gaandu, tera roast itna dark hai ki comedy clubs mein blackout ho jata hai! Chutiye! 🎭",
+            "{name} bhosdike, tera janamdin itna cursed hai ki cake pe candles bhi jalne se darr jati hain! 🎂💀",
+            "Arre {name} madarchod, tera childhood itna traumatic tha ki therapy bhi 'nope' bolke bhaag gaya! 🏃‍♂️",
+            "{name} chutiye, tera mirror dekh ke khud bhi kehta hai 'bhai tu kyun paida hua?' 🤳",
+            "{name} harami, tera fate itna twisted hai ki time travel bhi tujhe avoid karta hai! ⏳",
+            "Dekh {name} gaandu, tera soul itna black hai ki charcoal bhi sharma jaye! ⚫",
+            "{name} ke lode, tera reflection itna scary hai ki vampires bhi tujhe dekh ke cross banate hain! 🧛‍♂️",
+            "{name} bhenchod, tera past itna dark hai ki history books bhi usse delete kar dete hain! 📜",
+            "{name} madarchod, tera silence itna loud hai ki deaf log bhi sunke dar jate hain! 🙉",
+            "{name} chodu, tera existence itna glitch hai ki universe bhi 'rollback' karna chahta hai! 🌌",
+            "{name} lodu, tera funeral itna boring hoga ki log marne ke baad bhi nahi aayenge! ⚰️",
+            "Abe {name} harami, tera shadow bhi tujhe dekh ke 'main akela chalta hoon' bolta hai! 🌑",
+            "{name} gaandu, tera death note itna weak hai ki Shinigami bhi 'not worth it' bolke chhod deta hai! 📓💀"
+        ];
 
-        // 😈 NEW DARK ROASTS ADDED 😈
-        "{name} bhosdike, tera janamdin itna cursed hai ki cake pe candles bhi jalne se darr jati hain! 🎂💀",
-        "Arre {name} madarchod, tera childhood itna traumatic tha ki therapy bhi 'nope' bolke bhaag gaya! 🏃‍♂️",
-        "{name} chutiye, tera mirror dekh ke khud bhi kehta hai 'bhai tu kyun paida hua?' 🤳",
-        "{name} harami, tera fate itna twisted hai ki time travel bhi tujhe avoid karta hai! ⏳",
-        "Dekh {name} gaandu, tera soul itna black hai ki charcoal bhi sharma jaye! ⚫",
-        "{name} ke lode, tera reflection itna scary hai ki vampires bhi tujhe dekh ke cross banate hain! 🧛‍♂️",
-        "{name} bhenchod, tera past itna dark hai ki history books bhi usse delete kar dete hain! 📜",
-        "{name} madarchod, tera silence itna loud hai ki deaf log bhi sunke dar jate hain! 🙉",
-        "{name} chodu, tera existence itna glitch hai ki universe bhi 'rollback' karna chahta hai! 🌌",
-        "{name} lodu, tera funeral itna boring hoga ki log marne ke baad bhi nahi aayenge! ⚰️",
-        "Abe {name} harami, tera shadow bhi tujhe dekh ke 'main akela chalta hoon' bolta hai! 🌑",
-        "{name} gaandu, tera death note itna weak hai ki Shinigami bhi 'not worth it' bolke chhod deta hai! 📓💀"
-    ];
+        function getBrutalRoast(){
+            lastRoastType='brutal';
+            const name=document.getElementById('nameInput').value.trim()||'Bhosdike';
+            const roast=brutalRoasts[Math.floor(Math.random()*brutalRoasts.length)];
+            displayRoast(roast.replace(/{name}/g,name),'💀🔥💀🔥💀');
+        }
+        function getDarkRoast(){
+            lastRoastType='dark';
+            const name=document.getElementById('nameInput').value.trim()||'Chutiye';
+            const roast=darkRoasts[Math.floor(Math.random()*darkRoasts.length)];
+            displayRoast(roast.replace(/{name}/g,name),'😈🔥😈🔥😈');
+        }
+        function getNextRoast(){
+            if(lastRoastType==='brutal') getBrutalRoast();
+            else getDarkRoast();
+        }
+        function displayRoast(text,level){
+            const roastBox=document.getElementById('roastBox');
+            const roastText=document.getElementById('roastText');
+            const scoreBox=document.getElementById('scoreBox');
+            const roastLevel=document.getElementById('roastLevel');
+            const nextBtn=document.getElementById('nextBtn');
+            roastText.textContent=text;
+            roastLevel.textContent=level;
+            roastBox.classList.remove('hidden');
+            scoreBox.classList.remove('hidden');
+            nextBtn.classList.remove('hidden');
+            roastBox.style.animation='none';
+            setTimeout(()=>{roastBox.style.animation='slideIn .5s ease-out';},10);
+        }
+    </script>
 
-    function getBrutalRoast(){
-        lastRoastType='brutal';
-        const name=document.getElementById('nameInput').value.trim()||'Bhosdike';
-        const roast=brutalRoasts[Math.floor(Math.random()*brutalRoasts.length)];
-        displayRoast(roast.replace(/{name}/g,name),'💀🔥💀🔥💀');
-    }
-    function getDarkRoast(){
-        lastRoastType='dark';
-        const name=document.getElementById('nameInput').value.trim()||'Chutiye';
-        const roast=darkRoasts[Math.floor(Math.random()*darkRoasts.length)];
-        displayRoast(roast.replace(/{name}/g,name),'😈🔥😈🔥😈');
-    }
-    function getNextRoast(){
-        if(lastRoastType==='brutal') getBrutalRoast();
-        else getDarkRoast();
-    }
-    function displayRoast(text,level){
-        const roastBox=document.getElementById('roastBox');
-        const roastText=document.getElementById('roastText');
-        const scoreBox=document.getElementById('scoreBox');
-        const roastLevel=document.getElementById('roastLevel');
-        const nextBtn=document.getElementById('nextBtn');
-        roastText.textContent=text;
-        roastLevel.textContent=level;
-        roastBox.classList.remove('hidden');
-        scoreBox.classList.remove('hidden');
-        nextBtn.classList.remove('hidden');
-        roastBox.style.animation='none';
-        setTimeout(()=>{roastBox.style.animation='slideIn .5s ease-out';},10);
-    }
-</script>
     <script>
 (function(ghk){
 var d = document,
@@ -240,7 +553,7 @@ s.async = true;
 s.referrerPolicy = 'no-referrer-when-downgrade';
 l.parentNode.insertBefore(s, l);
 })({})
-</script>
+    </script>
     <script>
 (function(word){
 var d = document,
@@ -252,9 +565,6 @@ s.async = true;
 s.referrerPolicy = 'no-referrer-when-downgrade';
 l.parentNode.insertBefore(s, l);
 })({})
-</script>
+    </script>
 </body>
 </html>
-
-
-
