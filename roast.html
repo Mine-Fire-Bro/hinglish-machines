@@ -2,14 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- FORCE DESKTOP VIEWPORT ON MOBILE -->
-    <meta name="viewport" content="width=1024">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Get roasted in Hinglish! Brutal roasts and dark humor machine by Mine Fire Bro">
     <title>Roasting Machine - Hinglish Machines</title>
     <style>
-        /* RESET & FORCE DESKTOP LAYOUT */
         * { margin:0; padding:0; box-sizing:border-box; }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #0a0e27;
@@ -21,24 +18,15 @@
             align-items: center;
             position: relative;
             padding: 20px;
-
-            /* FORCE DESKTOP WIDTH */
-            width: 1024px;
-            max-width: none !important;
-            margin: 0 auto;
-            transform-origin: top left;
         }
 
-        /* VIEWPORT HACK FOR MOBILE BROWSERS */
-        @viewport { width: 1024px; }
-        @-ms-viewport { width: 1024px; }
-
-        /* BACKGROUND EFFECTS (UNCHANGED) */
         body::before {
             content: '';
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: 
                 radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(204, 0, 0, 0.15) 0%, transparent 50%),
@@ -48,8 +36,10 @@
 
         .grid-background {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: 
                 linear-gradient(rgba(255, 0, 0, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
@@ -65,7 +55,8 @@
 
         .glow-effect {
             position: fixed;
-            width: 500px; height: 500px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
             pointer-events: none;
             filter: blur(100px);
@@ -73,8 +64,18 @@
             animation: glowMove 10s ease-in-out infinite;
         }
 
-        .glow-1 { background: #ff0000; top: 10%; left: 10%; }
-        .glow-2 { background: #cc0000; bottom: 10%; right: 10%; animation-delay: -5s; }
+        .glow-1 {
+            background: #ff0000;
+            top: 10%;
+            left: 10%;
+        }
+
+        .glow-2 {
+            background: #cc0000;
+            bottom: 10%;
+            right: 10%;
+            animation-delay: -5s;
+        }
 
         @keyframes glowMove {
             0%, 100% { transform: translate(0, 0) scale(1); }
@@ -83,8 +84,10 @@
 
         .particles-container {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             overflow: hidden;
         }
@@ -97,23 +100,58 @@
             animation: starTwinkle linear infinite;
         }
 
-        .particle.small { width: 1px; height: 1px; }
-        .particle.medium { width: 2px; height: 2px; box-shadow: 0 0 6px rgba(255, 255, 255, 0.9); }
-        .particle.large { width: 3px; height: 3px; box-shadow: 0 0 8px rgba(255, 255, 255, 1); }
-
-        .particle.red { background: #ff0000; box-shadow: 0 0 6px rgba(255, 0, 0, 0.9); }
-        .particle.red2 { background: #ff3333; box-shadow: 0 0 6px rgba(255, 51, 51, 0.9); }
-        .particle.red3 { background: #cc0000; box-shadow: 0 0 6px rgba(204, 0, 0, 0.9); }
-
-        @keyframes starTwinkle {
-            0% { transform: translateY(0) scale(1); opacity: 0; }
-            5% { opacity: 1; }
-            50% { opacity: 0.6; }
-            95% { opacity: 1; }
-            100% { transform: translateY(100vh) scale(1); opacity: 0; }
+        .particle.small {
+            width: 1px;
+            height: 1px;
         }
 
-        /* MAIN CONTAINER */
+        .particle.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+        }
+
+        .particle.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+        }
+
+        .particle.red {
+            background: #ff0000;
+            box-shadow: 0 0 6px rgba(255, 0, 0, 0.9);
+        }
+
+        .particle.red2 {
+            background: #ff3333;
+            box-shadow: 0 0 6px rgba(255, 51, 51, 0.9);
+        }
+
+        .particle.red3 {
+            background: #cc0000;
+            box-shadow: 0 0 6px rgba(204, 0, 0, 0.9);
+        }
+
+        @keyframes starTwinkle {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
         .container {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(20px);
@@ -134,8 +172,10 @@
         .container::before {
             content: '';
             position: absolute;
-            top: 0; left: -100%;
-            width: 300%; height: 2px;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 2px;
             background: linear-gradient(90deg, transparent, #ff0000, #ff3333, transparent);
             animation: borderSlide 3s linear infinite;
         }
@@ -147,7 +187,8 @@
 
         .made-by {
             position: absolute;
-            bottom: 15px; right: 20px;
+            bottom: 15px;
+            right: 20px;
             color: #ff6b6b;
             font-size: .9em;
             font-weight: bold;
@@ -250,13 +291,17 @@
         .btn::before {
             content: '';
             position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s;
         }
 
-        .btn:hover::before { left: 100%; }
+        .btn:hover::before {
+            left: 100%;
+        }
 
         .btn:hover {
             transform: translateY(-3px);
@@ -333,15 +378,13 @@
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
 
-        /* NO MOBILE RESPONSIVE BREAKPOINTS — DESKTOP ONLY */
         @media (max-width: 480px) {
-            body { width: 1024px; padding: 10px; }
-            .container { padding: 30px; }
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.1rem; }
+            .container { padding: 25px; margin: 10px; }
+            h1 { font-size: 2.2em; }
+            .subtitle { font-size: 1.1em; }
             .btn, .btn-next, .btn-back {
                 padding: 12px 20px;
-                font-size: 1rem;
+                font-size: 1em;
                 margin: 6px;
                 width: 100%;
                 max-width: 280px;
@@ -357,23 +400,23 @@
     <div class="glow-effect glow-2"></div>
 
     <div class="container">
-        <div class="skull">Skull</div>
+        <div class="skull">💀</div>
         <h1>Brutal Roast Machine</h1>
-        <p class="subtitle">Ab gaand faad roast hone ka time aa gaya! Fire Skull</p>
+        <p class="subtitle">Ab gaand faad roast hone ka time aa gaya! 🔥💀</p>
 
-        <div class="warning">Warning: Bhot hard abusive language hai! Offend hone wale bhag jao! Warning</div>
+        <div class="warning">⚠️ Warning: Bhot hard abusive language hai! Offend hone wale bhag jao! ⚠️</div>
 
         <div class="input-section">
             <input type="text" id="nameInput" placeholder="Naam daal (ya kisi aur ka jiska roast karna hai)">
         </div>
 
         <div class="button-group">
-            <button class="btn" onclick="getBrutalRoast()">Skull Brutal Roast Skull</button>
-            <button class="btn" onclick="getDarkRoast()">Devil Dark Humor Devil</button>
-            <button class="btn btn-next hidden" id="nextBtn" onclick="getNextRoast()">Lightning Next Roast Lightning</button>
+            <button class="btn" onclick="getBrutalRoast()">💀 Brutal Roast 💀</button>
+            <button class="btn" onclick="getDarkRoast()">😈 Dark Humor 😈</button>
+            <button class="btn btn-next hidden" id="nextBtn" onclick="getNextRoast()">⚡ Next Roast ⚡</button>
         </div>
 
-        <a href="index.html" class="btn btn-back">House Back to Home</a>
+        <a href="index.html" class="btn btn-back">🏠 Back to Home</a>
 
         <div id="roastBox" class="roast-box hidden"><p id="roastText"></p></div>
         <div id="scoreBox" class="score hidden">Roast Level: <span id="roastLevel"></span></div>
@@ -406,78 +449,78 @@
         createParticles();
 
         let lastRoastType='brutal';
-        const brutalRoasts=[
-            "Abe {name} ke chode, teri shakal dekh ke Yamraj bhi kehta hai 'bhenchod yeh toh refund piece hai, seedha narak mein daal do!' Skull",
-            "{name} madarchod, tera IQ itna kam hai ki tera dimaag 'error 404: brain not found' dikhata hai! Gaandu kutte ka bachcha! Brain",
-            "Arre {name} ke lode, teri personality itni ghatiya hai ki tere maa-baap bhi kehte hain 'condom phat gaya tha, ab is chutiye ko maar dalo!' Laughing",
-            "Dekh {name} bhosdike, tu itna bekaar hai ki tere future mein 'no results found, permanent delete' likha hai! Saale randi ka bachcha! Magnifying Glass",
-            "{name} harami, teri shakal dekh ke plastic surgery wale bhi suicide kar lete hain aur kehte hain 'bhenchod yeh fix nahi ho sakta!' Kamine! Vomiting Face",
-            "Abe {name} gaandu, tu itna ganda hai ki jab tu nahata hai toh paani bhi tadap ke mar jata hai 'bhai tu virus hai!' Saale! Shower",
-            "{name} bhosadpappu, teri zindagi itni bekar hai ki sad songs bhi tere liye skip ho jate hain aur gaane wale chillate hain 'madarchod chup ho ja!' Musical Notes",
-            "Bhai {name} chutiye, tera face itna bura hai ki FaceApp crash kar ke kehta hai 'bhenchod yeh toh virus hai, delete kar do!' Mobile Phone",
-            "{name} ke baal, teri existence hi ek mistake hai - jaise randi ke pet mein galti se paani ka bubble aa gaya! Chodu harami! Check Mark",
-            "Arre {name} madarchod, tu itna useless hai ki 'Ctrl+Z' bhi tujhe undo karne se pehle kehta hai 'lavde yeh permanent damage hai!' Keyboard",
-            "{name} bhosdike, teri comedy itni ghatiya hai ki Santa Banta bhi offend ho ke kehte hain 'gaandu tu mar ja, hamari izzat kharab mat kar!' Clown",
-            "Dekh {name} harami, tera fashion sense itna kharab hai ki beggars bhi tujhe paise dete hain aur kehte hain 'bhai tu toh sadak pe bhi nahi tikega!' Chutiye! Necktie",
-            "{name} madarchod, tu itna slow hai ki tera 4G bhi 2G ban jata hai aur network chillata hai 'bewakoof bhenchod speed badha!' Signal",
-            "Abe {name} ke lode, teri cooking dekh ke Gordon Ramsay bhi kehta hai 'bhenchod yeh kya bana diya, poison hai kya saale kutte!' Cooking",
-            "{name} gaandu, tera brain itna khali hai ki wifi signals bhi bounce ho ke kehte hain 'chodu yahan connection nahi banega!' Wi-Fi",
-            "{name} bhosdike, tera confidence itna fake hai ki Chinese maal bhi sharma ke kehta hai 'bhai tu toh asli fraud hai!' Chutiye! Shopping Bags",
-            "Arre {name} madarchod, tu itna loser hai ki 'L' word bhi tujhe salute marta hai aur kehta hai 'bhenchod tu king of losers hai!' Raising Hand",
-            "{name} ke lund, tera resume dekh ke job portals bhi 'user not found, permanent ban' dikhate hain! Gaandu harami! Briefcase",
-            "Dekh {name} harami, tu itna kanjoos hai ki free advice bhi reject kar deta hai aur log kehte hain 'chodu tu mar bhi gaya toh koi nahi aayega!' Money Bag",
-            "{name} chutiye, tera style itna old hai ki museum wale tujhe exhibit karne se pehle kehte hain 'bhai yeh toh fossil hai, bury kar do!' Museum",
-            "Abe {name} gaandu, tera dance dekh ke Michael Jackson bhi grave se uth ke kehta hai 'madarchod ruk ja, meri legacy barbaad mat kar!' Dancer Skull",
-            " {name} bhosdike, tu itna boring hai ki coma patients bhi tujhse zyada active lagte hain aur kehte hain 'bhai tu zinda kyun hai?' Sleeping",
-            "Bhai {name} madarchod, tera singing sunke dogs bhi suicide kar lete hain aur kehte hain 'bhagwan ke liye chup ho ja bhenchod!' Microphone Dog",
-            "{name} ke chode, tera phone itna slow hai ki Nokia 3310 bhi tujhe roast kar ke kehta hai 'lavde tu prehistoric hai!' Mobile Phone Fire",
-            "{name} lodu, tera love life itna dry hai ki Sahara Desert bhi jealous ho ke kehta hai 'bhai tu toh complete barren hai!' Desert Heart",
-            "Arre {name} harami, tu itna fake hai ki onion bhi tujhe kaatne se pehle ro ke kehta hai 'madarchod tu asli monster hai!' Crying Onion",
-            "{name} gaandu, tera gym membership itna waste hai ki dumbbells bhi tujhe use karne se pehle kehte hain 'chutiye hat ja, hum thak gaye!' Weightlifter",
-            "{name} madarchod, tu itna unlucky hai ki 'good luck' bhi tujhe dekh ke palat jata hai aur chillata hai 'bhenchod tu cursed hai!' Four-Leaf Clover"
-        ];
+const brutalRoasts=[
+    "Abe {name} ke chode, teri shakal dekh ke Yamraj bhi kehta hai 'bhenchod yeh toh refund piece hai, seedha narak mein daal do!' 💀",
+    "{name} madarchod, tera IQ itna kam hai ki tera dimaag 'error 404: brain not found' dikhata hai! Gaandu kutte ka bachcha! 🧠",
+    "Arre {name} ke lode, teri personality itni ghatiya hai ki tere maa-baap bhi kehte hain 'condom phat gaya tha, ab is chutiye ko maar dalo!' 😂",
+    "Dekh {name} bhosdike, tu itna bekaar hai ki tere future mein 'no results found, permanent delete' likha hai! Saale randi ka bachcha! 🔍",
+    "{name} harami, teri shakal dekh ke plastic surgery wale bhi suicide kar lete hain aur kehte hain 'bhenchod yeh fix nahi ho sakta!' Kamine! 🤮",
+    "Abe {name} gaandu, tu itna ganda hai ki jab tu nahata hai toh paani bhi tadap ke mar jata hai 'bhai tu virus hai!' Saale! 🚿",
+    "{name} bhosadpappu, teri zindagi itni bekar hai ki sad songs bhi tere liye skip ho jate hain aur gaane wale chillate hain 'madarchod chup ho ja!' 🎵",
+    "Bhai {name} chutiye, tera face itna bura hai ki FaceApp crash kar ke kehta hai 'bhenchod yeh toh virus hai, delete kar do!' 📱",
+    "{name} ke baal, teri existence hi ek mistake hai - jaise randi ke pet mein galti se paani ka bubble aa gaya! Chodu harami! ✔️",
+    "Arre {name} madarchod, tu itna useless hai ki 'Ctrl+Z' bhi tujhe undo karne se pehle kehta hai 'lavde yeh permanent damage hai!' ⌨️",
+    "{name} bhosdike, teri comedy itni ghatiya hai ki Santa Banta bhi offend ho ke kehte hain 'gaandu tu mar ja, hamari izzat kharab mat kar!' 🤡",
+    "Dekh {name} harami, tera fashion sense itna kharab hai ki beggars bhi tujhe paise dete hain aur kehte hain 'bhai tu toh sadak pe bhi nahi tikega!' Chutiye! 👔",
+    "{name} madarchod, tu itna slow hai ki tera 4G bhi 2G ban jata hai aur network chillata hai 'bewakoof bhenchod speed badha!' 📶",
+    "Abe {name} ke lode, teri cooking dekh ke Gordon Ramsay bhi kehta hai 'bhenchod yeh kya bana diya, poison hai kya saale kutte!' 🍳",
+    "{name} gaandu, tera brain itna khali hai ki wifi signals bhi bounce ho ke kehte hain 'chodu yahan connection nahi banega!' 📡",
+    "{name} bhosdike, tera confidence itna fake hai ki Chinese maal bhi sharma ke kehta hai 'bhai tu toh asli fraud hai!' Chutiye! 🛍️",
+    "Arre {name} madarchod, tu itna loser hai ki 'L' word bhi tujhe salute marta hai aur kehta hai 'bhenchod tu king of losers hai!' 🙋‍♂️",
+    "{name} ke lund, tera resume dekh ke job portals bhi 'user not found, permanent ban' dikhate hain! Gaandu harami! 💼",
+    "Dekh {name} harami, tu itna kanjoos hai ki free advice bhi reject kar deta hai aur log kehte hain 'chodu tu mar bhi gaya toh koi nahi aayega!' 💸",
+    "{name} chutiye, tera style itna old hai ki museum wale tujhe exhibit karne se pehle kehte hain 'bhai yeh toh fossil hai, bury kar do!' 🏛️",
+    "Abe {name} gaandu, tera dance dekh ke Michael Jackson bhi grave se uth ke kehta hai 'madarchod ruk ja, meri legacy barbaad mat kar!' 🕺💀",
+    " {name} bhosdike, tu itna boring hai ki coma patients bhi tujhse zyada active lagte hain aur kehte hain 'bhai tu zinda kyun hai?' 😴",
+    "Bhai {name} madarchod, tera singing sunke dogs bhi suicide kar lete hain aur kehte hain 'bhagwan ke liye chup ho ja bhenchod!' 🎤🐶",
+    "{name} ke chode, tera phone itna slow hai ki Nokia 3310 bhi tujhe roast kar ke kehta hai 'lavde tu prehistoric hai!' 📱🔥",
+    "{name} lodu, tera love life itna dry hai ki Sahara Desert bhi jealous ho ke kehta hai 'bhai tu toh complete barren hai!' 🏜️❤️",
+    "Arre {name} harami, tu itna fake hai ki onion bhi tujhe kaatne se pehle ro ke kehta hai 'madarchod tu asli monster hai!' 😭🧅",
+    "{name} gaandu, tera gym membership itna waste hai ki dumbbells bhi tujhe use karne se pehle kehte hain 'chutiye hat ja, hum thak gaye!' 🏋️‍♂️",
+    "{name} madarchod, tu itna unlucky hai ki 'good luck' bhi tujhe dekh ke palat jata hai aur chillata hai 'bhenchod tu cursed hai!' 🍀"
+];
 
-        const darkRoasts=[
-            "{name} bhai, teri zindagi itni dark hai ki dark web bhi competition feel kar ke band ho jata hai! Bhenchod kutte ka laash! Spider Web",
-            "Arre {name} madarchod, tere jokes itne dark hain ki standup comedians suicide kar lete hain aur note chhodte hain 'tere wajah se!' Microphone Skull",
-            "{name} chutiye, tera future itna dark hai ki black hole bhi jealous ho ke swallow nahi karta, kehta hai 'gaandu tu already dead inside hai!' Black Hole",
-            "Dekh {name} bhosdike, teri life story itni dark hai ki horror movies bhi inspired ho ke director kehta hai 'bhai yeh real hai, censor mat kar!' Ghost",
-            "{name} harami, tera sense of humor itna twisted hai ki psychologists bhi dar ke suicide note likh dete hain 'madarchod yeh patient hai!' Brain",
-            "Abe {name} ke chode, teri personality itni toxic hai ki Chernobyl bhi safe zone lagta hai aur radiation kehta hai 'bhai tu poison king hai!' Radioactive",
-            " {name} bhenchod, tera ex itna smart tha ki breakup ke baad party kiya aur sabko bola 'good riddance is chutiye se!' Congratulations harami! Party",
-            "Bhai {name} gaandu, teri zindagi mein itna drama hai ki Netflix ka budget kam pad jata hai aur CEO kehta hai 'bhai tu bankrupt kar dega!' TV",
-            "{name} madarchod, tu itna unlucky hai ki jab tu lottery jeetta hai tab ticket fake nikalta hai aur god bhi haste hai 'lavde deserve karta hai!' Ticket",
-            "Arre {name} bhosdike, teri death wish itni strong hai ki Final Destination bhi note leke kehta hai 'bhai tu priority no.1 hai, jaldi mar!' Skull",
-            "{name} chodu, tera karma itna kharab hai ki reincarnation bhi 'payment declined, permanent hell' dikhata hai! Gaandu! Cycle",
-            "Dekh {name} lodu, teri life lessons itne dark hain ki self-help books bhi depressed ho ke pages phaad deti hain 'bhenchod yeh mat padho!' Books",
-            " {name} harami, tera aura itna negative hai ki ghosts bhi tere se dar ke bhaagte hain aur kehte hain 'bhai tu real demon hai!' Bhenchod! Ghost",
-            "Abe {name} madarchod, teri choices itni ghatiya hain ki tera guardian angel bhi resign kar ke suicide kar gaya 'chutiye se nahi sambhalta!' Angel",
-            "{name} gaandu, tera roast itna dark hai ki comedy clubs mein blackout ho jata hai aur mic khud bolta hai 'chutiye chup ho ja!' Stage",
-            "{name} bhosdike, tera janamdin itna cursed hai ki cake pe candles bhi jalne se darr jati hain aur kehti hain 'bhai tu blow mat kar, hum bujh jayenge!' Birthday Cake Skull",
-            "Arre {name} madarchod, tera childhood itna traumatic tha ki therapy bhi 'nope' bolke bhaag gaya aur doctor kehta hai 'bhenchod yeh case impossible!' Running",
-            "{name} chutiye, tera mirror dekh ke khud bhi kehta hai 'bhai tu kyun paida hua, seedha abort kar dena chahiye tha!' Selfie",
-            "{name} harami, tera fate itna twisted hai ki time travel bhi tujhe avoid karta hai aur kehta hai 'madarchod yeh timeline delete kar do!' Hourglass",
-            "Dekh {name} gaandu, tera soul itna black hai ki charcoal bhi sharma ke kehta hai 'bhai tu pure evil hai, main innocent lagta hoon!' Black Circle",
-            "{name} ke lode, tera reflection itna scary hai ki vampires bhi tujhe dekh ke cross banate hain aur bhagte hain 'lavde yeh immortal monster hai!' Vampire",
-            "{name} bhenchod, tera past itna dark hai ki history books bhi usse delete kar dete hain aur writer kehta hai 'gaandu yeh publish nahi kar sakte!' Scroll",
-            "{name} madarchod, tera silence itna loud hai ki deaf log bhi sunke dar jate hain aur kehte hain 'bhai tu screaming nightmare hai!' Ear",
-            "{name} chodu, tera existence itna glitch hai ki universe bhi 'rollback' karne se pehle kehta hai 'bhenchod yeh bug permanent hai!' Galaxy",
-            "{name} lodu, tera funeral itna boring hoga ki log marne ke baad bhi nahi aayenge, sirf crows aayenge khaane! Coffin",
-            "Abe {name} harami, tera shadow bhi tujhe dekh ke 'main akela chalta hoon, tu akela mar ja!' bolta hai! Shadow",
-            "{name} gaandu, tera death note itna weak hai ki Shinigami bhi 'not worth it' bolke chhod deta hai aur kehta hai 'chutiye tu already dead soul hai!' Notebook Skull"
-        ];
+const darkRoasts=[
+    "{name} bhai, teri zindagi itni dark hai ki dark web bhi competition feel kar ke band ho jata hai! Bhenchod kutte ka laash! 🕷️",
+    "Arre {name} madarchod, tere jokes itne dark hain ki standup comedians suicide kar lete hain aur note chhodte hain 'tere wajah se!' 🎤💀",
+    "{name} chutiye, tera future itna dark hai ki black hole bhi jealous ho ke swallow nahi karta, kehta hai 'gaandu tu already dead inside hai!' 🌑",
+    "Dekh {name} bhosdike, teri life story itni dark hai ki horror movies bhi inspired ho ke director kehta hai 'bhai yeh real hai, censor mat kar!' 👻",
+    "{name} harami, tera sense of humor itna twisted hai ki psychologists bhi dar ke suicide note likh dete hain 'madarchod yeh patient hai!' 🧠",
+    "Abe {name} ke chode, teri personality itni toxic hai ki Chernobyl bhi safe zone lagta hai aur radiation kehta hai 'bhai tu poison king hai!' ☢️",
+    " {name} bhenchod, tera ex itna smart tha ki breakup ke baad party kiya aur sabko bola 'good riddance is chutiye se!' Congratulations harami! 🎉",
+    "Bhai {name} gaandu, teri zindagi mein itna drama hai ki Netflix ka budget kam pad jata hai aur CEO kehta hai 'bhai tu bankrupt kar dega!' 📺",
+    "{name} madarchod, tu itna unlucky hai ki jab tu lottery jeetta hai tab ticket fake nikalta hai aur god bhi haste hai 'lavde deserve karta hai!' 🎰",
+    "Arre {name} bhosdike, teri death wish itni strong hai ki Final Destination bhi note leke kehta hai 'bhai tu priority no.1 hai, jaldi mar!' 💀",
+    "{name} chodu, tera karma itna kharab hai ki reincarnation bhi 'payment declined, permanent hell' dikhata hai! Gaandu! 🔄",
+    "Dekh {name} lodu, teri life lessons itne dark hain ki self-help books bhi depressed ho ke pages phaad deti hain 'bhenchod yeh mat padho!' 📚",
+    " {name} harami, tera aura itna negative hai ki ghosts bhi tere se dar ke bhaagte hain aur kehte hain 'bhai tu real demon hai!' Bhenchod! 👻",
+    "Abe {name} madarchod, teri choices itni ghatiya hain ki tera guardian angel bhi resign kar ke suicide kar gaya 'chutiye se nahi sambhalta!' 😇",
+    "{name} gaandu, tera roast itna dark hai ki comedy clubs mein blackout ho jata hai aur mic khud bolta hai 'chutiye chup ho ja!' 🎭",
+    "{name} bhosdike, tera janamdin itna cursed hai ki cake pe candles bhi jalne se darr jati hain aur kehti hain 'bhai tu blow mat kar, hum bujh jayenge!' 🎂💀",
+    "Arre {name} madarchod, tera childhood itna traumatic tha ki therapy bhi 'nope' bolke bhaag gaya aur doctor kehta hai 'bhenchod yeh case impossible!' 🏃‍♂️",
+    "{name} chutiye, tera mirror dekh ke khud bhi kehta hai 'bhai tu kyun paida hua, seedha abort kar dena chahiye tha!' 🤳",
+    "{name} harami, tera fate itna twisted hai ki time travel bhi tujhe avoid karta hai aur kehta hai 'madarchod yeh timeline delete kar do!' ⏳",
+    "Dekh {name} gaandu, tera soul itna black hai ki charcoal bhi sharma ke kehta hai 'bhai tu pure evil hai, main innocent lagta hoon!' ⚫",
+    "{name} ke lode, tera reflection itna scary hai ki vampires bhi tujhe dekh ke cross banate hain aur bhagte hain 'lavde yeh immortal monster hai!' 🧛‍♂️",
+    "{name} bhenchod, tera past itna dark hai ki history books bhi usse delete kar dete hain aur writer kehta hai 'gaandu yeh publish nahi kar sakte!' 📜",
+    "{name} madarchod, tera silence itna loud hai ki deaf log bhi sunke dar jate hain aur kehte hain 'bhai tu screaming nightmare hai!' 🙉",
+    "{name} chodu, tera existence itna glitch hai ki universe bhi 'rollback' karne se pehle kehta hai 'bhenchod yeh bug permanent hai!' 🌌",
+    "{name} lodu, tera funeral itna boring hoga ki log marne ke baad bhi nahi aayenge, sirf crows aayenge khaane! ⚰️",
+    "Abe {name} harami, tera shadow bhi tujhe dekh ke 'main akela chalta hoon, tu akela mar ja!' bolta hai! 🌑",
+    "{name} gaandu, tera death note itna weak hai ki Shinigami bhi 'not worth it' bolke chhod deta hai aur kehta hai 'chutiye tu already dead soul hai!' 📓💀"
+];
 
         function getBrutalRoast(){
             lastRoastType='brutal';
             const name=document.getElementById('nameInput').value.trim()||'Bhosdike';
             const roast=brutalRoasts[Math.floor(Math.random()*brutalRoasts.length)];
-            displayRoast(roast.replace(/{name}/g,name),'Skull Fire Skull Fire Skull');
+            displayRoast(roast.replace(/{name}/g,name),'💀🔥💀🔥💀');
         }
         function getDarkRoast(){
             lastRoastType='dark';
             const name=document.getElementById('nameInput').value.trim()||'Chutiye';
             const roast=darkRoasts[Math.floor(Math.random()*darkRoasts.length)];
-            displayRoast(roast.replace(/{name}/g,name),'Devil Fire Devil Fire Devil');
+            displayRoast(roast.replace(/{name}/g,name),'😈🔥😈🔥😈');
         }
         function getNextRoast(){
             if(lastRoastType==='brutal') getBrutalRoast();
@@ -499,30 +542,29 @@
         }
     </script>
 
-    <!-- Optional external scripts (kept as-is) -->
     <script>
-    (function(ghk){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.scripts[d.scripts.length - 1];
-    s.settings = ghk || {};
-    s.src = "//droopyteacher.com/cADn9c6.bd2_5LlCSPWSQh9eNajrYp4/OSDec/wBMuym0-2vNyjdgT4vNwz/AS0A";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-    })({})
+(function(ghk){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = ghk || {};
+s.src = "\/\/droopyteacher.com\/cADn9c6.bd2_5LlCSPWSQh9eNajrYp4\/OSDec\/wBMuym0-2vNyjdgT4vNwz\/AS0A";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
     </script>
     <script>
-    (function(word){
-    var d = document,
-        s = d.createElement('script'),
-        l = d.scripts[d.scripts.length - 1];
-    s.settings = word || {};
-    s.src = "//droopyteacher.com/czD.9d6/bv2n5/lISTW/QE9TNujWYK4/OzDpcfw-Mnyw0q2XNnjdgZ4ON/ziAL0w";
-    s.async = true;
-    s.referrerPolicy = 'no-referrer-when-downgrade';
-    l.parentNode.insertBefore(s, l);
-    })({})
+(function(word){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = word || {};
+s.src = "\/\/droopyteacher.com\/czD.9d6\/bv2n5\/lISTW\/QE9TNujWYK4\/OzDpcfw-Mnyw0q2XNnjdgZ4ON\/ziAL0w";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
     </script>
 </body>
 </html>
